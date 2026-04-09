@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazolar – Empowering Ecuador's Schools Through Solar Energy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CSS VARIABLES – change colors here to retheme the whole site
+    ============================================================ */
+    :root {
+      --navy:       #0d1f3c;
+      --navy-light: #1a3260;
+      --green:      #2e9e5b;
+      --green-dark: #1e7a44;
+      --white:      #ffffff;
+      --off-white:  #f7f9fc;
+      --gray:       #6b7280;
+      --gray-light: #e5e7eb;
+      --text:       #111827;
+
+      --font:       'Inter', sans-serif;
+      --radius:     10px;
+      --shadow:     0 4px 24px rgba(0,0,0,0.08);
+      --transition: 0.25s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img { display: block; max-width: 100%; border-radius: var(--radius); }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ============================================================
+       REUSABLE UTILITIES
+    ============================================================ */
+    .container {
+      width: 90%;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section { padding: 90px 0; }
+    .section--gray { background: var(--off-white); }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 620px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--navy);
+    }
+    .btn-white:hover { background: var(--off-white); }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-light);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    /* Logo */
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .navbar__logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Sun SVG icon */
+    .navbar__logo-icon svg { width: 22px; height: 22px; fill: var(--white); }
+
+    /* Desktop nav links */
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .navbar__links a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+      transition: color var(--transition);
+    }
+    .navbar__links a:hover { color: var(--green); }
+
+    .navbar__links .nav-cta a {
+      background: var(--green);
+      color: var(--white);
+      padding: 9px 20px;
+      border-radius: var(--radius);
+    }
+    .navbar__links .nav-cta a:hover { background: var(--green-dark); color: var(--white); }
+
+    /* Hamburger (mobile) */
+    .navbar__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .navbar__toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      padding: 120px 0 100px;
+      text-align: center;
+    }
+
+    .hero__eyebrow {
+      display: inline-block;
+      background: rgba(46, 158, 91, 0.2);
+      color: #6ee7a2;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero__headline {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 820px;
+      margin: 0 auto 24px;
+    }
+
+    .hero__headline em {
+      font-style: normal;
+      color: #6ee7a2;
+    }
+
+    .hero__sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    /* ============================================================
+       WHAT IS AMAZOLAR?
+    ============================================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about__quote {
+      font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    .about__quote span { color: var(--green); }
+
+    .about__img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* ============================================================
+       THE AMAZOLAR PATH
+    ============================================================ */
+    .path { text-align: center; }
+
+    .path__header { margin-bottom: 48px; }
+    .path__header .section-sub { margin: 0 auto; }
+
+    .path__cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .path-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: left;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .path-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+
+    .path-card__step {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .path-card__num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--gray-light);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .path-card__title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .path-card__desc {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    /* ============================================================
+       RECOGNITIONS
+    ============================================================ */
+    .recognitions { text-align: center; }
+
+    .recognitions__cards {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .award-card {
+      background: var(--white);
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      padding: 40px 48px;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: var(--shadow);
+    }
+
+    .award-card__icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .award-card__title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .award-card__sub {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    /* ============================================================
+       BECOME A PARTNER – full-width dark banner
+    ============================================================ */
+    .partner-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white);
+      padding: 90px 0;
+      text-align: center;
+    }
+
+    .partner-banner__heading {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .partner-banner__heading span { color: #6ee7a2; }
+
+    .partner-banner__sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 580px;
+      margin: 0 auto 16px;
+    }
+
+    .partner-banner__tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 18px;
+      border-radius: 100px;
+    }
+
+    /* ============================================================
+       UN SUSTAINABLE DEVELOPMENT GOALS
+    ============================================================ */
+    .sdg { text-align: center; }
+
+    .sdg__header { margin-bottom: 48px; }
+    .sdg__header .section-sub { margin: 0 auto; }
+
+    .sdg__cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .sdg-card {
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: left;
+      box-shadow: var(--shadow);
+    }
+
+    .sdg-card--primary { background: var(--navy); color: var(--white); }
+    .sdg-card--secondary { background: var(--green); color: var(--white); }
+    .sdg-card--indirect { background: var(--off-white); color: var(--text); border: 1px solid var(--gray-light); }
+
+    .sdg-card__badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    .sdg-card--primary .sdg-card__badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+    .sdg-card--secondary .sdg-card__badge { background: rgba(255,255,255,0.2); color: var(--white); }
+    .sdg-card--indirect .sdg-card__badge { background: var(--gray-light); color: var(--gray); }
+
+    .sdg-card__num {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+      opacity: 0.2;
+    }
+
+    .sdg-card__title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .sdg-card__desc {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       NEWSLETTER
+    ============================================================ */
+    .newsletter {
+      text-align: center;
+      background: var(--off-white);
+    }
+
+    .newsletter__tagline {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+
+    .newsletter__form {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter__input {
+      flex: 1;
+      min-width: 240px;
+      max-width: 380px;
+      padding: 14px 20px;
+      border: 2px solid var(--gray-light);
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .newsletter__input:focus { border-color: var(--green); }
+    .newsletter__input::placeholder { color: var(--gray); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 60px 0 36px;
+    }
+
+    .footer__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .footer__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .footer__logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--green);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer__logo-icon svg { width: 20px; height: 20px; fill: var(--white); }
+
+    .footer__mission {
+      max-width: 520px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer__tax {
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      max-width: 480px;
+    }
+
+    .footer__social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .footer__social a:hover { color: var(--white); }
+
+    .footer__social svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .footer__divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 8px 0;
+    }
+
+    .footer__copy {
+      font-size: 0.8rem;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .path__cards { grid-template-columns: repeat(2, 1fr); }
+      .sdg__cards { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 64px 0; }
+
+      .navbar__links { display: none; flex-direction: column; gap: 0; }
+      .navbar__links.open {
+        display: flex;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        border-bottom: 1px solid var(--gray-light);
+        padding: 16px 0;
+      }
+      .navbar__links.open li { width: 100%; }
+      .navbar__links.open li a {
+        display: block;
+        padding: 12px 24px;
+        font-size: 1rem;
+      }
+      .navbar__links.open .nav-cta a {
+        margin: 8px 24px;
+        display: block;
+        text-align: center;
+      }
+      .navbar__toggle { display: flex; }
+      .navbar { position: relative; }
+
+      .path__cards { grid-template-columns: 1fr; }
+      .sdg__cards { grid-template-columns: 1fr; }
+      .recognitions__cards { flex-direction: column; align-items: center; }
+      .hero { padding: 80px 0 70px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container navbar__inner">
+
+      <!-- Logo -->
+      <a class="navbar__logo" href="#home" aria-label="Amazolar home">
+        <div class="navbar__logo-icon" aria-hidden="true">
+          <!-- Sun icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zM4.22 4.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 0 1-1.41 1.42l-.71-.71a1 1 0 0 1 0-1.41zm13.44 13.44a1 1 0 0 1 1.41 0l.71.71a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 0 1 0-1.41zM2 12a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2h-1a1 1 0 0 1-1-1zM4.92 18.36a1 1 0 0 1 0-1.41l.7-.71a1 1 0 1 1 1.42 1.41l-.71.71a1 1 0 0 1-1.41 0zm13.44-13.44a1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7z"/>
+          </svg>
+        </div>
+        Amazolar
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#recognitions">Partners</a></li>
+        <li><a href="#partner">Become a Partner</a></li>
+        <li class="nav-cta"><a href="#newsletter">Take Action</a></li>
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       1. HERO
+  ============================================================ -->
+  <section class="hero" id="home" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero__eyebrow">Solar Energy &bull; Ecuador &bull; Education</div>
+      <h1 class="hero__headline" id="hero-heading">
+        Empowering Students,<br />
+        <em>Supporting Educators,</em><br />
+        Brightening Lives
+      </h1>
+      <p class="hero__sub">
+        Amazolar is an emerging nonprofit initiative partnering with under-resourced schools
+        in Ecuador to harness solar energy as a catalyst for lasting educational transformation.
+      </p>
+      <a href="#newsletter" class="btn btn-primary">Take Action</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. WHAT IS AMAZOLAR?
+  ============================================================ -->
+  <section class="section" id="about" aria-labelledby="about-heading">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Left: text -->
+        <div>
+          <span class="section-label">Who We Are</span>
+          <p class="about__quote" id="about-heading">
+            We are an emerging nonprofit initiative seeking to partner with
+            <span>under-resourced schools in Ecuador,</span> to support teachers
+            and empower students through the transformative power of solar energy.
+          </p>
+        </div>
+
+        <!-- Right: placeholder image -->
+        <div>
+          <img
+            class="about__img"
+            src="https://placehold.co/600x450/0d1f3c/ffffff?text=Amazolar+in+Action"
+            alt="Students and teachers in Ecuador benefiting from Amazolar's solar energy initiative"
+          />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. THE AMAZOLAR PATH
+  ============================================================ -->
+  <section class="section section--gray path" id="path" aria-labelledby="path-heading">
+    <div class="container">
+
+      <div class="path__header">
+        <span class="section-label">Our Process</span>
+        <h2 class="section-heading" id="path-heading">The Amazolar Path</h2>
+        <p class="section-sub">
+          A four-step journey from identifying communities in need to delivering
+          sustainable, solar-powered solutions.
+        </p>
+      </div>
+
+      <div class="path__cards">
+
+        <!-- Step 1 -->
+        <div class="path-card">
+          <div class="path-card__step">Step 01</div>
+          <div class="path-card__num">01</div>
+          <div class="path-card__title">Community Discovery</div>
+          <p class="path-card__desc">
+            We identify under-resourced schools in Ecuador that lack access to reliable
+            energy and quality learning environments.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="path-card">
+          <div class="path-card__step">Step 02</div>
+          <div class="path-card__num">02</div>
+          <div class="path-card__title">Partner Engagement</div>
+          <p class="path-card__desc">
+            Our team visits schools in person, builds relationships with educators,
+            administrators, and local communities.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="path-card">
+          <div class="path-card__step">Step 03</div>
+          <div class="path-card__num">03</div>
+          <div class="path-card__title">Asset Mapping</div>
+          <p class="path-card__desc">
+            We conduct thorough assessments to determine the areas of greatest need
+            and identify the highest-impact opportunities.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="path-card">
+          <div class="path-card__step">Step 04</div>
+          <div class="path-card__num">04</div>
+          <div class="path-card__title">Impact in Action</div>
+          <p class="path-card__desc">
+            We provide solar resources and ongoing support to create sustainable,
+            long-term impact for students and teachers alike.
+          </p>
+        </div>
+
+      </div>
+
+      <div style="text-align:center;">
+        <a href="#about" class="btn btn-outline">More Details</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. RECOGNITIONS
+  ============================================================ -->
+  <section class="section recognitions" id="recognitions" aria-labelledby="recognitions-heading">
+    <div class="container">
+      <span class="section-label">Awards &amp; Recognition</span>
+      <h2 class="section-heading" id="recognitions-heading">Our Achievements</h2>
+      <p class="section-sub" style="margin: 0 auto;">
+        Amazolar has been recognized by leading entrepreneurship and innovation competitions
+        for our mission-driven approach.
+      </p>
+
+      <div class="recognitions__cards">
+
+        <!-- Award 1 -->
+        <div class="award-card">
+          <div class="award-card__icon">🏆</div>
+          <div class="award-card__title">Winner</div>
+          <div class="award-card__sub">Bergh Startup Accelerator</div>
+        </div>
+
+        <!-- Award 2 -->
+        <div class="award-card">
+          <div class="award-card__icon">🥈</div>
+          <div class="award-card__title">2nd Place</div>
+          <div class="award-card__sub">Big Idea Pitch Competition</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. BECOME A PARTNER
+  ============================================================ -->
+  <section class="partner-banner" id="partner" aria-labelledby="partner-heading">
+    <div class="container">
+      <h2 class="partner-banner__heading" id="partner-heading">
+        Be the Change!<br /><span>Become a Partner.</span>
+      </h2>
+      <p class="partner-banner__sub">
+        We're actively seeking organizations and individuals aligned with our mission.
+        We welcome partners working in:
+      </p>
+      <div class="partner-banner__tags">
+        <span class="tag">Education</span>
+        <span class="tag">Energy</span>
+        <span class="tag">Technology</span>
+        <span class="tag">Employment</span>
+      </div>
+      <a href="mailto:contact@amazolar.org" class="btn btn-white">Join Us</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. UN SUSTAINABLE DEVELOPMENT GOALS
+  ============================================================ -->
+  <section class="section section--gray sdg" id="sdg" aria-labelledby="sdg-heading">
+    <div class="container">
+
+      <div class="sdg__header">
+        <span class="section-label">Global Alignment</span>
+        <h2 class="section-heading" id="sdg-heading">UN Sustainable Development Goals</h2>
+        <p class="section-sub">
+          Amazolar's work directly supports the United Nations' vision for a more
+          equitable and sustainable world.
+        </p>
+      </div>
+
+      <div class="sdg__cards">
+
+        <!-- SDG 4 -->
+        <div class="sdg-card sdg-card--primary">
+          <span class="sdg-card__badge">Primary Goal</span>
+          <div class="sdg-card__num">04</div>
+          <div class="sdg-card__title">Quality Education</div>
+          <p class="sdg-card__desc">
+            Ensure inclusive and equitable quality education and promote lifelong
+            learning opportunities for all.
+          </p>
+        </div>
+
+        <!-- SDG 7 -->
+        <div class="sdg-card sdg-card--secondary">
+          <span class="sdg-card__badge">Primary Goal</span>
+          <div class="sdg-card__num">07</div>
+          <div class="sdg-card__title">Affordable &amp; Clean Energy</div>
+          <p class="sdg-card__desc">
+            Ensure access to affordable, reliable, sustainable, and modern energy
+            for all communities.
+          </p>
+        </div>
+
+        <!-- Indirect Goals -->
+        <div class="sdg-card sdg-card--indirect">
+          <span class="sdg-card__badge">Indirect Goals</span>
+          <div class="sdg-card__title" style="margin-top:16px;">Additional SDGs We Support</div>
+          <p class="sdg-card__desc">
+            &bull; SDG 1 — No Poverty<br />
+            &bull; SDG 8 — Decent Work &amp; Economic Growth<br />
+            &bull; SDG 10 — Reduced Inequalities<br />
+            &bull; SDG 11 — Sustainable Cities &amp; Communities<br />
+            &bull; SDG 13 — Climate Action
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. NEWSLETTER SIGNUP
+  ============================================================ -->
+  <section class="section newsletter" id="newsletter" aria-labelledby="newsletter-heading">
+    <div class="container">
+      <span class="section-label">Stay Connected</span>
+      <h2 class="section-heading" id="newsletter-heading">Join Our Newsletter!</h2>
+      <p class="newsletter__tagline">
+        We believe in a future brightened by collaboration and fueled by renewable energy.
+        Stay informed on our progress and ways to get involved.
+      </p>
+
+      <form class="newsletter__form" onsubmit="handleSubscribe(event)" novalidate>
+        <label for="email-input" class="sr-only">Email address</label>
+        <input
+          class="newsletter__input"
+          type="email"
+          id="email-input"
+          name="email"
+          placeholder="Enter your email address"
+          required
+          aria-required="true"
+        />
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <!-- Logo -->
+      <div class="footer__logo">
+        <div class="footer__logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zM4.22 4.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 0 1-1.41 1.42l-.71-.71a1 1 0 0 1 0-1.41zm13.44 13.44a1 1 0 0 1 1.41 0l.71.71a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 0 1 0-1.41zM2 12a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2h-1a1 1 0 0 1-1-1zM4.92 18.36a1 1 0 0 1 0-1.41l.7-.71a1 1 0 1 1 1.42 1.41l-.71.71a1 1 0 0 1-1.41 0zm13.44-13.44a1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7z"/>
+          </svg>
+        </div>
+        Amazolar
+      </div>
+
+      <!-- Mission -->
+      <p class="footer__mission">
+        Amazolar is an emerging nonprofit initiative partnering with under-resourced schools
+        in Ecuador to support teachers and empower students through the transformative
+        power of solar energy.
+      </p>
+
+      <!-- Tax status notice -->
+      <div class="footer__tax">
+        Currently applying for 501(c)(3) status. Donations are not currently tax-deductible.
+      </div>
+
+      <!-- LinkedIn -->
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/company/amazolar" target="_blank" rel="noopener noreferrer" aria-label="Amazolar on LinkedIn">
+          <!-- LinkedIn SVG -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          Follow us on LinkedIn
+        </a>
+      </div>
+
+      <div class="footer__divider"></div>
+
+      <p class="footer__copy">&copy; 2025 Amazolar. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Screen-reader only utility -->
+  <style>.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }</style>
+
+  <!-- ============================================================
+       JAVASCRIPT – mobile nav toggle + newsletter form
+  ============================================================ -->
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close nav when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+
+    // Newsletter form handler
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const input = document.getElementById('email-input');
+      if (!input.value) return;
+      alert('Thank you for subscribing! We\'ll be in touch soon.');
+      input.value = '';
+    }
+  </script>
+
+</body>
+</html>
