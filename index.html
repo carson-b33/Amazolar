@@ -364,68 +364,6 @@
     }
 
     /* ============================================================
-       PHOTO GALLERY STRIP
-    ============================================================ */
-    .gallery {
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .gallery__grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr;
-      grid-template-rows: 380px;
-    }
-
-    .gallery__item {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .gallery__item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 0;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-
-    .gallery__item:hover img { transform: scale(1.04); }
-
-    .gallery__caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 100%);
-      color: var(--white);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 32px 20px 16px;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 768px) {
-      .gallery__grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 220px 220px;
-      }
-      .gallery__item:last-child {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery__grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 240px);
-      }
-      .gallery__item:last-child { grid-column: auto; }
-    }
-
-    /* ============================================================
        RECOGNITIONS
     ============================================================ */
     .recognitions { text-align: center; }
@@ -908,45 +846,6 @@
 
       <div style="text-align:center;">
         <a href="#about" class="btn btn-outline">More Details</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       PHOTO GALLERY STRIP
-  ============================================================ -->
-  <section class="gallery" aria-label="Photos from Ecuador">
-    <div class="gallery__grid">
-
-      <!-- Large left: Quito aerial cityscape -->
-      <div class="gallery__item">
-        <img
-          src="https://images.unsplash.com/photo-LpLSO9e6c70?auto=format&fit=crop&w=1200&q=80"
-          alt="Aerial view of Quito, Ecuador with the Andes mountains in the background"
-          loading="lazy"
-        />
-        <div class="gallery__caption">Quito, Ecuador</div>
-      </div>
-
-      <!-- Top right: students studying -->
-      <div class="gallery__item">
-        <img
-          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80"
-          alt="Students learning in a classroom"
-          loading="lazy"
-        />
-        <div class="gallery__caption">Students Learning</div>
-      </div>
-
-      <!-- Bottom right: Ecuadorian landscape -->
-      <div class="gallery__item">
-        <img
-          src="https://images.unsplash.com/photo-EOFUPSOYApc?auto=format&fit=crop&w=800&q=80"
-          alt="Ecuadorian mountain landscape with traditional architecture"
-          loading="lazy"
-        />
-        <div class="gallery__caption">Ecuador Landscape</div>
       </div>
 
     </div>
