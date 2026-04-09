@@ -212,24 +212,36 @@
     ============================================================ */
     .hero {
       position: relative;
-      background: url('https://images.unsplash.com/photo-IUwpdJVM4Fc?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      overflow: hidden;
       color: var(--white);
       padding: 120px 0 100px;
       text-align: center;
+      background: var(--dark-bg); /* fallback while video loads */
     }
 
-    /* Dark overlay on hero background image */
-    .hero::before {
-      content: '';
+    /* Background video */
+    .hero__video {
       position: absolute;
       inset: 0;
-      background: rgba(10, 10, 10, 0.68);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Dark overlay on top of video */
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
     }
 
     .hero .container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .hero__eyebrow {
@@ -767,6 +779,23 @@
        1. HERO
   ============================================================ -->
   <section class="hero" id="home" aria-labelledby="hero-heading">
+
+    <!-- Background video (autoplays, muted, pauses at 5s) -->
+    <video
+      id="heroVideo"
+      class="hero__video"
+      src="Ecuador_Video.mp4"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+      aria-hidden="true"
+    ></video>
+
+    <!-- Semi-transparent dark overlay -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <!-- Hero content -->
     <div class="container">
       <div class="hero__eyebrow">Solar Energy &bull; Ecuador &bull; Education</div>
       <h1 class="hero__headline" id="hero-heading">
@@ -780,6 +809,7 @@
       </p>
       <a href="#newsletter" class="btn btn-primary">Take Action</a>
     </div>
+
   </section>
 
   <!-- ============================================================
@@ -1135,6 +1165,12 @@
       if (!input.value) return;
       alert('Thank you for subscribing! We\'ll be in touch soon.');
       input.value = '';
+    }
+
+    // Hero video: pause after exactly 5 seconds
+    const heroVideo = document.getElementById('heroVideo');
+    if (heroVideo) {
+      setTimeout(() => heroVideo.pause(), 5000);
     }
   </script>
 
