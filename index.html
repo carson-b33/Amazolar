@@ -787,6 +787,7 @@
       src="Ecuador_Video.mp4"
       autoplay
       muted
+      loop
       playsinline
       preload="auto"
       aria-hidden="true"
@@ -1167,11 +1168,6 @@
       input.value = '';
     }
 
-    // Hero video: pause after exactly 5 seconds
-    const heroVideo = document.getElementById('heroVideo');
-    if (heroVideo) {
-      setTimeout(() => heroVideo.pause(), 5000);
-    }
   </script>
 
 </body>
