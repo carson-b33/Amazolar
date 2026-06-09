@@ -36,7 +36,7 @@
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: var(--font); color: var(--text); background: var(--white); line-height: 1.6; }
+    body { font-family: var(--font); color: var(--text); background: var(--off-white); line-height: 1.6; }
     img  { display: block; max-width: 100%; border-radius: var(--radius); }
     a    { text-decoration: none; color: inherit; }
 
@@ -49,42 +49,22 @@
       margin: 0 auto;
     }
 
-    .section        { padding: 90px 0; }
-    .section--gray  { background: var(--off-white); }
-    .section--dark  { background: var(--dark-bg); color: var(--white); }
+    .section { padding: 72px 0; }
 
     .section-label {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-
-    .section-heading {
-      font-family: var(--font-heading);
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-    .section--dark .section-heading { color: var(--white); }
-
-    .section-sub {
-      font-size: 1.05rem;
-      color: var(--gray);
-      max-width: 640px;
-    }
-    .section--dark .section-sub { color: rgba(255,255,255,0.7); }
 
     /* Buttons */
     .btn {
       display: inline-block;
-      padding: 14px 32px;
+      padding: 13px 28px;
       border-radius: var(--radius);
       font-weight: 700;
       font-size: 0.95rem;
@@ -92,14 +72,16 @@
       border: 2px solid transparent;
       transition: background var(--transition), color var(--transition), border-color var(--transition);
     }
-    .btn-primary  { background: var(--navy);  color: var(--white); }
-    .btn-primary:hover  { background: var(--green); color: var(--navy); }
-    .btn-outline  { background: transparent; color: var(--navy); border-color: var(--navy); }
-    .btn-outline:hover  { background: var(--navy); color: var(--white); }
-    .btn-white    { background: var(--white); color: var(--navy); }
-    .btn-white:hover    { background: var(--green); color: var(--navy); }
-    .btn-gold     { background: var(--green); color: var(--navy); border-color: var(--green); }
-    .btn-gold:hover     { background: var(--green-dark); border-color: var(--green-dark); }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); color: var(--navy); }
+    .btn-gold  { background: var(--green); color: var(--navy); border-color: var(--green); }
+    .btn-gold:hover  { background: var(--green-dark); border-color: var(--green-dark); }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
 
     /* ============================================================
        NAVBAR
@@ -111,431 +93,237 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
     .navbar__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
+      display: flex; align-items: center; justify-content: space-between; height: 68px;
     }
     .navbar__logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.01em;
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800;
+      color: var(--navy); letter-spacing: -0.01em;
     }
     .navbar__logo-icon {
-      width: 36px; height: 36px;
-      background: var(--green);
-      border-radius: 8px;
+      width: 36px; height: 36px; background: var(--green); border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
     }
     .navbar__logo-icon svg { width: 22px; height: 22px; fill: var(--navy); }
     .navbar__links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
+      display: flex; align-items: center; gap: 32px; list-style: none;
     }
     .navbar__links a {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--navy);
+      font-size: 0.9rem; font-weight: 600; color: var(--navy);
       transition: color var(--transition);
     }
     .navbar__links a:hover { color: var(--green); }
     .navbar__links .nav-cta a {
-      background: var(--navy);
-      color: var(--white);
-      padding: 9px 20px;
-      border-radius: var(--radius);
+      background: var(--navy); color: var(--white);
+      padding: 9px 20px; border-radius: var(--radius);
     }
     .navbar__links .nav-cta a:hover { background: var(--green); color: var(--navy); }
     .navbar__toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
+      display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 4px;
     }
     .navbar__toggle span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--navy);
-      border-radius: 2px;
-      transition: all var(--transition);
+      display: block; width: 24px; height: 2px; background: var(--navy);
+      border-radius: 2px; transition: all var(--transition);
     }
 
     /* ============================================================
        PAGE HERO
     ============================================================ */
     .page-hero {
-      background: var(--dark-bg);
-      color: var(--white);
-      padding: 80px 0 72px;
-      text-align: center;
+      background: var(--dark-bg); color: var(--white);
+      padding: 80px 0 72px; text-align: center;
     }
     .page-hero__eyebrow {
       display: inline-block;
-      background: rgba(200,168,75,0.15);
-      color: var(--green);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 24px;
+      background: rgba(200,168,75,0.15); color: var(--green);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
     }
     .page-hero__heading {
       font-family: var(--font-heading);
       font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px;
     }
     .page-hero__heading em { font-style: normal; color: var(--green); }
     .page-hero__sub {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.75);
-      max-width: 520px;
-      margin: 0 auto;
+      font-size: 1.15rem; color: rgba(255,255,255,0.75);
+      max-width: 500px; margin: 0 auto;
     }
 
     /* ============================================================
-       SECTION 1 — CONNECT
+       TWO-OPTION GRID
     ============================================================ */
-    .connect__grid {
+    .options-grid {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 64px;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
     }
-    .connect__subhead {
-      font-size: 1rem;
-      color: var(--gray);
-      margin-bottom: 28px;
-      max-width: 480px;
-    }
-    .connect__list {
-      list-style: none;
+
+    /* Shared card shell */
+    .option-card {
+      border-radius: 16px;
+      padding: 44px 40px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      margin-bottom: 36px;
+    }
+
+    /* ── Left card: "Open a Door" ── */
+    .option-card--light {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      box-shadow: var(--shadow);
+    }
+
+    /* ── Right card: "Become a Donor" ── */
+    .option-card--dark {
+      background: var(--dark-bg);
+      color: var(--white);
+    }
+    .option-card--dark .section-label { color: var(--green); }
+
+    .option-card__heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .option-card--light .option-card__heading { color: var(--navy); }
+    .option-card--dark  .option-card__heading { color: var(--white); }
+
+    .option-card__subhead {
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .option-card--light .option-card__subhead { color: var(--gray); }
+    .option-card--dark  .option-card__subhead { color: rgba(255,255,255,0.7); }
+
+    /* ── Connect items (left card) ── */
+    .connect__list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 18px;
+      margin-bottom: 32px;
+      flex: 1;
     }
     .connect__item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
+      display: flex; gap: 14px; align-items: flex-start;
     }
     .connect__item-icon {
       flex-shrink: 0;
-      width: 38px; height: 38px;
+      width: 36px; height: 36px;
       background: rgba(200,168,75,0.12);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     .connect__item-text strong {
-      display: block;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 2px;
-      font-size: 0.97rem;
+      display: block; font-weight: 700; color: var(--navy);
+      margin-bottom: 1px; font-size: 0.95rem;
     }
-    .connect__item-text span {
-      font-size: 0.9rem;
-      color: var(--gray);
-    }
-    .connect__aside {
-      background: var(--off-white);
-      border: 1px solid var(--gray-light);
-      border-radius: 12px;
-      padding: 36px 32px;
-      align-self: start;
-    }
-    .connect__aside-heading {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 14px;
-    }
-    .connect__aside p {
-      font-size: 0.95rem;
-      color: var(--gray);
-      line-height: 1.75;
-    }
+    .connect__item-text span { font-size: 0.88rem; color: var(--gray); }
 
-    /* ============================================================
-       SECTION 2 — SPONSOR TIERS
-    ============================================================ */
-    .sponsor__intro {
-      max-width: 680px;
-      margin-bottom: 48px;
-    }
-    .sponsor__intro p {
-      font-size: 1rem;
-      color: var(--gray);
-      margin-top: 12px;
-      line-height: 1.7;
-    }
-    .tier-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-    .tier-card {
-      background: var(--white);
-      border: 2px solid var(--gray-light);
-      border-radius: 12px;
-      padding: 28px 22px;
-      display: flex;
-      flex-direction: column;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .tier-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
-    .tier-card--featured {
-      border-color: var(--green);
-      box-shadow: 0 0 0 1px var(--green), 0 4px 24px rgba(200,168,75,0.15);
-    }
-    .tier-card__badge {
-      display: inline-block;
-      align-self: flex-start;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: rgba(200,168,75,0.15);
-      color: var(--green);
-      padding: 4px 10px;
-      border-radius: 100px;
-      margin-bottom: 14px;
-    }
-    .tier-card__name {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-    .tier-card__amount {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-    .tier-card__amount span {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--gray);
-    }
-    .tier-card__impact {
-      font-size: 0.88rem;
-      color: var(--gray);
-      font-style: italic;
-      margin: 12px 0 18px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--gray-light);
-      line-height: 1.5;
-    }
-    .tier-card__perks {
-      list-style: none;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-    .tier-card__perk {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      font-size: 0.88rem;
-      color: var(--text);
-      line-height: 1.45;
-    }
-    .tier-card__perk::before {
-      content: '✓';
-      color: var(--green);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .tier-card__inherit {
-      font-size: 0.8rem;
-      color: var(--gray);
-      font-style: italic;
-      list-style: none;
-      padding-bottom: 6px;
-    }
-
-    /* ============================================================
-       SECTION 3 — INDIVIDUAL MONTHLY
-    ============================================================ */
+    /* ── Donor goal badge ── */
     .monthly-goal {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-flex; align-items: center; gap: 8px;
       background: rgba(200,168,75,0.12);
       border: 1px solid rgba(200,168,75,0.3);
       border-radius: var(--radius);
-      padding: 10px 20px;
-      margin-top: 16px;
-      margin-bottom: 36px;
-      font-size: 0.95rem;
-      font-weight: 600;
+      padding: 8px 16px;
+      margin-bottom: 24px;
+      font-size: 0.88rem; font-weight: 600; color: var(--green);
+    }
+
+    /* ── Donor tier list (right card) ── */
+    .donor-tiers {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+    .donor-tier {
+      display: flex; gap: 14px; align-items: baseline;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .donor-tier:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+    .donor-tier__amount {
+      font-size: 1.05rem; font-weight: 800;
       color: var(--green);
+      white-space: nowrap;
+      min-width: 76px;
     }
-    .monthly-intro {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.7);
-      max-width: 580px;
-      margin-bottom: 36px;
-      line-height: 1.7;
+    .donor-tier__impact {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
     }
-    .monthly-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-bottom: 40px;
+
+    /* ── One-time note ── */
+    .donor-note {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      font-style: italic;
     }
-    .monthly-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px;
-      padding: 28px 22px;
-      transition: background var(--transition), transform var(--transition);
-    }
-    .monthly-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
-    .monthly-card--featured {
-      background: var(--green);
-      border-color: var(--green);
-    }
-    .monthly-card--featured .monthly-card__amount { color: var(--navy); }
-    .monthly-card--featured .monthly-card__amount span { color: rgba(26,26,26,0.65); }
-    .monthly-card--featured .monthly-card__impact   { color: var(--navy); opacity: 0.8; }
-    .monthly-card--featured .monthly-card__badge    { background: rgba(0,0,0,0.12); color: var(--navy); }
-    .monthly-card__badge {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      background: rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.7);
-      padding: 4px 10px;
-      border-radius: 100px;
-      margin-bottom: 14px;
-    }
-    .monthly-card__amount {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .monthly-card__amount span {
-      font-size: 0.9rem;
-      font-weight: 600;
-      opacity: 0.65;
-    }
-    .monthly-card__impact {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.55;
-    }
-    .join-ctas {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
+
+    /* ── CTA row ── */
+    .card-ctas {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-top: auto;
     }
 
     /* ============================================================
        FOOTER
     ============================================================ */
     .footer {
-      background: var(--dark-bg);
-      color: rgba(255,255,255,0.7);
+      background: var(--dark-bg); color: rgba(255,255,255,0.7);
       padding: 60px 0 36px;
     }
     .footer__inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 20px;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;
     }
     .footer__logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.01em;
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;
+      color: var(--white); letter-spacing: -0.01em;
     }
     .footer__logo-icon {
-      width: 32px; height: 32px;
-      background: var(--green);
-      border-radius: 7px;
+      width: 32px; height: 32px; background: var(--green); border-radius: 7px;
       display: flex; align-items: center; justify-content: center;
     }
     .footer__logo-icon svg { width: 20px; height: 20px; fill: var(--navy); }
-    .footer__mission {
-      max-width: 520px;
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
+    .footer__mission { max-width: 520px; font-size: 0.95rem; line-height: 1.7; }
     .footer__social a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
-      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 600;
       transition: color var(--transition);
     }
     .footer__social a:hover { color: var(--white); }
     .footer__social svg { width: 20px; height: 20px; fill: currentColor; }
-    .footer__divider {
-      width: 100%;
-      height: 1px;
-      background: rgba(255,255,255,0.1);
-      margin: 8px 0;
-    }
+    .footer__divider { width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin: 8px 0; }
     .footer__copy { font-size: 0.8rem; }
 
     /* ============================================================
        RESPONSIVE
     ============================================================ */
-    @media (max-width: 1000px) {
-      .tier-grid    { grid-template-columns: repeat(2, 1fr); }
-      .monthly-grid { grid-template-columns: repeat(2, 1fr); }
-      .connect__grid { grid-template-columns: 1fr; gap: 40px; }
+    @media (max-width: 800px) {
+      .options-grid { grid-template-columns: 1fr; }
+      .option-card  { padding: 36px 28px; }
     }
 
     @media (max-width: 640px) {
-      .section { padding: 64px 0; }
-      .tier-grid    { grid-template-columns: 1fr; }
-      .monthly-grid { grid-template-columns: 1fr; }
-      .join-ctas    { flex-direction: column; }
-      .join-ctas .btn { text-align: center; width: 100%; }
+      .section { padding: 56px 0; }
+      .option-card { padding: 30px 22px; }
+      .card-ctas { flex-direction: column; }
+      .card-ctas .btn { text-align: center; }
 
       .navbar__links { display: none; flex-direction: column; gap: 0; }
       .navbar__links.open {
-        display: flex;
-        position: absolute;
-        top: 68px; left: 0;
-        width: 100%;
-        background: var(--white);
-        border-bottom: 1px solid var(--gray-light);
-        padding: 16px 0;
+        display: flex; position: absolute; top: 68px; left: 0; width: 100%;
+        background: var(--white); border-bottom: 1px solid var(--gray-light); padding: 16px 0;
       }
       .navbar__links.open li { width: 100%; }
       .navbar__links.open li a { display: block; padding: 12px 24px; font-size: 1rem; }
@@ -592,96 +380,57 @@
   </section>
 
   <!-- ============================================================
-       SECTION 1 — CONNECT US
+       TWO OPTIONS — side by side
   ============================================================ -->
-  <section class="section" id="connect" aria-labelledby="connect-heading">
+  <section class="section" aria-label="Ways to support Amazolar">
     <div class="container">
-      <div class="connect__grid">
+      <div class="options-grid">
 
-        <!-- Left: heading + list + CTA -->
-        <div>
+        <!-- ── OPTION 1: Open a Door ── -->
+        <article class="option-card option-card--light" id="connect" aria-labelledby="connect-heading">
           <span class="section-label">Connect Us</span>
-          <h2 class="section-heading" id="connect-heading">
-            Open one door<br />from your world
-          </h2>
-          <p class="connect__subhead">
+          <h2 class="option-card__heading" id="connect-heading">Open a Door</h2>
+          <p class="option-card__subhead">
             Not every kind of help is a check. Most of you can open a door we can't:
           </p>
+
           <ul class="connect__list" id="connect-list" aria-label="Ways to connect us">
             <!-- rendered by JS -->
           </ul>
-          <a href="#" id="connect-cta" class="btn btn-primary">Get in touch</a>
-        </div>
 
-        <!-- Right: context aside -->
-        <aside class="connect__aside" aria-label="Why this matters">
-          <div class="connect__aside-heading">Why this matters</div>
-          <p>
-            Amazolar is a young initiative. Our biggest constraint isn't ideas — it's access.
-            A warm introduction to a school in Ecuador, a lawyer who understands international
-            structures, or a company willing to run a workplace fundraiser can move us further
-            than a year of cold outreach. If you see yourself in any of these roles, we want
-            to hear from you.
+          <div class="card-ctas">
+            <a id="connect-cta" href="#" class="btn btn-primary"
+               target="_blank" rel="noopener noreferrer">Open a Door</a>
+          </div>
+        </article>
+
+        <!-- ── OPTION 2: Become a Donor ── -->
+        <article class="option-card option-card--dark" id="donate" aria-labelledby="donate-heading">
+          <span class="section-label">Individual Giving</span>
+          <h2 class="option-card__heading" id="donate-heading">Become a Donor</h2>
+
+          <div class="monthly-goal" role="status" aria-label="Fundraising goal">
+            <span aria-hidden="true">🎯</span>
+            Goal: $1,500/month — enough to sustain the program for the next 18 months
+          </div>
+
+          <p class="option-card__subhead">A monthly gift goes further:</p>
+
+          <ul class="donor-tiers" id="monthly-tiers" aria-label="Monthly giving levels">
+            <!-- rendered by JS -->
+          </ul>
+
+          <p class="donor-note">
+            We're also more than happy to accept one-time donations — whatever is easiest.
           </p>
-        </aside>
+
+          <div class="card-ctas">
+            <a id="donate-monthly-cta" href="#" class="btn btn-gold">Give Monthly</a>
+            <a id="donate-once-cta"    href="#" class="btn btn-outline-white">Give Once</a>
+          </div>
+        </article>
 
       </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 2 — BECOME AN OFFICIAL SPONSOR
-  ============================================================ -->
-  <section class="section section--gray" id="sponsors" aria-labelledby="sponsor-heading">
-    <div class="container">
-
-      <div class="sponsor__intro">
-        <span class="section-label">Organizations &amp; Major Donors</span>
-        <h2 class="section-heading" id="sponsor-heading">Become an Official Sponsor</h2>
-        <p>
-          Official sponsorships are recognition- and relationship-driven, sustaining the program
-          year over year. Perks are cumulative — each tier includes everything below it.
-          Annual commitment; monthly arrangements available on request.
-        </p>
-      </div>
-
-      <div class="tier-grid" id="sponsor-tiers" role="list" aria-label="Sponsorship tiers">
-        <!-- rendered by JS -->
-      </div>
-
-      <a href="#" id="sponsor-cta" class="btn btn-primary">Become a sponsor</a>
-
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 3 — INDIVIDUALLY DONATE
-  ============================================================ -->
-  <section class="section section--dark" id="donate" aria-labelledby="donate-heading">
-    <div class="container">
-
-      <span class="section-label">Individual Giving</span>
-      <h2 class="section-heading" id="donate-heading">Individually Donate</h2>
-
-      <div class="monthly-goal" role="status" aria-label="Fundraising goal">
-        <span aria-hidden="true">🎯</span>
-        Goal: $1,500/month — enough to sustain the program for the next 18 months
-      </div>
-
-      <p class="monthly-intro">
-        Help us reach our monthly goal. Every recurring gift is a step toward standing on our own.
-        A monthly gift goes further — here's what each level sustains:
-      </p>
-
-      <div class="monthly-grid" id="monthly-tiers" role="list" aria-label="Monthly giving levels">
-        <!-- rendered by JS -->
-      </div>
-
-      <div class="join-ctas">
-        <a href="#" id="donate-monthly-cta" class="btn btn-gold">Give Monthly</a>
-        <a href="#" id="donate-once-cta"    class="btn btn-white">Give Once</a>
-      </div>
-
     </div>
   </section>
 
@@ -727,91 +476,25 @@
 
   <script>
     // ============================================================
-    // DATA ARRAYS — edit these to update the page content
+    // DATA ARRAYS — edit these to update page content
     // ============================================================
 
     const CONNECT_ITEMS = [
-      {
-        icon: '🧭',
-        label: 'Guide us',
-        desc:  'Join our advisory circle and meet with us monthly as we scale.',
-      },
-      {
-        icon: '🌎',
-        label: 'Connect us in Ecuador',
-        desc:  'A school, employer, or community you trust.',
-      },
-      {
-        icon: '🏢',
-        label: 'Champion us at work',
-        desc:  'A company sponsorship or workplace fundraiser.',
-      },
-      {
-        icon: '⚖️',
-        label: 'Lend your expertise',
-        desc:  'Legal, accounting, or design as we expand our organization.',
-      },
-    ];
-
-    // Perks are incremental per tier; the renderer builds cumulative lists.
-    const SPONSOR_TIERS = [
-      {
-        name:   'Supporter',
-        amount: '$500',
-        impact: 'Sustains roughly one month of programming.',
-        perks: [
-          'Name listed on website',
-          'Annual impact report',
-        ],
-      },
-      {
-        name:   'Patron',
-        amount: '$1,000',
-        impact: 'Sustains a full cycle of workshops for a cohort.',
-        perks: [
-          'Name/logo on program materials',
-          'A founders\u2019 update call',
-        ],
-      },
-      {
-        name:   'Partner',
-        amount: '$2,000',
-        impact: 'Sustains a facilitator\u2019s salary for a season.',
-        perks: [
-          'Recognition at the annual event',
-          'Group virtual session with the cohort',
-        ],
-      },
-      {
-        name:     'Founding Benefactor',
-        amount:   '$5,000+',
-        impact:   'Anchors expansion to a new community.',
-        featured: true,
-        perks: [
-          'Named role in the org\u2019s story',
-          'Co-creates the partnership with the team',
-        ],
-      },
+      { icon: '🧭', label: 'Guide us',
+        desc: 'Join our advisory circle and meet with us monthly as we scale.' },
+      { icon: '🌎', label: 'Connect us in Ecuador',
+        desc: 'A school, employer, or community you trust.' },
+      { icon: '🏢', label: 'Champion us at work',
+        desc: 'A company sponsorship or workplace fundraiser.' },
+      { icon: '⚖️', label: 'Lend your expertise',
+        desc: 'Legal, accounting, or design as we expand our organization.' },
     ];
 
     const MONTHLY_TIERS = [
-      {
-        amount: '$25',
-        impact: 'Holds a student\u2019s place in the program all year',
-      },
-      {
-        amount: '$50',
-        impact: 'Brings an expert speaker to a workshop every month',
-      },
-      {
-        amount:   '$250',
-        impact:   'Powers a full workshop each month: lunch, supplies, and speakers',
-        featured: true,
-      },
-      {
-        amount: '$1,000',
-        impact: 'Sustains our lead facilitator month over month',
-      },
+      { amount: '$25/mo',    impact: 'Holds a student\u2019s place in the program all year' },
+      { amount: '$50/mo',    impact: 'Brings an expert speaker to a workshop every month' },
+      { amount: '$250/mo',   impact: 'Powers a full workshop each month: lunch, supplies, and speakers' },
+      { amount: '$1,000/mo', impact: 'Sustains our lead facilitator month over month' },
     ];
 
     // ============================================================
@@ -830,45 +513,17 @@
       `).join('');
     }
 
-    function renderSponsorTiers() {
-      const container = document.getElementById('sponsor-tiers');
-
-      container.innerHTML = SPONSOR_TIERS.map((tier, idx) => {
-        const inheritNote = idx > 0
-          ? `<li class="tier-card__inherit">Everything in ${SPONSOR_TIERS[idx - 1].name}, plus:</li>`
-          : '';
-        const perksHtml = tier.perks.map(p =>
-          `<li class="tier-card__perk">${p}</li>`
-        ).join('');
-
-        return `
-          <div class="tier-card${tier.featured ? ' tier-card--featured' : ''}" role="listitem">
-            ${tier.featured ? '<div class="tier-card__badge">Anchor Gift</div>' : ''}
-            <div class="tier-card__name">${tier.name}</div>
-            <div class="tier-card__amount">${tier.amount}<span>/year</span></div>
-            <div class="tier-card__impact">${tier.impact}</div>
-            <ul class="tier-card__perks" aria-label="Recognition for ${tier.name}">
-              ${inheritNote}
-              ${perksHtml}
-            </ul>
-          </div>
-        `;
-      }).join('');
-    }
-
     function renderMonthlyTiers() {
       document.getElementById('monthly-tiers').innerHTML = MONTHLY_TIERS.map(tier => `
-        <div class="monthly-card${tier.featured ? ' monthly-card--featured' : ''}" role="listitem">
-          ${tier.featured ? '<div class="monthly-card__badge">Most impactful</div>' : ''}
-          <div class="monthly-card__amount">${tier.amount}<span>/mo</span></div>
-          <div class="monthly-card__impact">${tier.impact}</div>
-        </div>
+        <li class="donor-tier">
+          <span class="donor-tier__amount">${tier.amount}</span>
+          <span class="donor-tier__impact">${tier.impact}</span>
+        </li>
       `).join('');
     }
 
     function wireLinks() {
       document.getElementById('connect-cta').href      = LINKS.CONNECT_ACTION;
-      document.getElementById('sponsor-cta').href      = LINKS.SPONSOR_ACTION;
       document.getElementById('donate-monthly-cta').href = LINKS.DONATE_MONTHLY_URL;
       document.getElementById('donate-once-cta').href  = LINKS.DONATE_ONCE_URL;
     }
@@ -890,7 +545,6 @@
     // Init
     document.addEventListener('DOMContentLoaded', () => {
       renderConnectItems();
-      renderSponsorTiers();
       renderMonthlyTiers();
       wireLinks();
     });
