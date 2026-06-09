@@ -7,27 +7,38 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
-       CSS VARIABLES — shared with index.html
+       CSS VARIABLES — chalk palette (matches index.html)
     ============================================================ */
     :root {
-      --navy:         #1a1a1a;
-      --navy-light:   #2a2a2a;
-      --green:        #c8a84b;
-      --green-dark:   #a8883a;
+      --chalk-board:  #2d4a3e;
+      --chalk-dark:   #1a2e24;
+      --amber:        #f5b731;
+      --amber-dark:   #d49b20;
+      --amber-glow:   rgba(245,183,49,0.14);
+      --chalk-white:  #f5f0e8;
+      --chalk-cream:  #fdf8f2;
+      --teal:         #3dbba0;
       --white:        #ffffff;
-      --off-white:    #f5f5f5;
+      --text-dark:    #1c2e26;
       --gray:         #6b7280;
-      --gray-light:   #e5e7eb;
-      --text:         #1a1a1a;
-      --dark-bg:      #0a0a0a;
+      --gray-light:   #e0ddd5;
+
+      --navy:       #1c2e26;
+      --navy-light: #2d4a3e;
+      --green:      #f5b731;
+      --green-dark: #d49b20;
+      --off-white:  #fdf8f2;
+      --dark-bg:    #2d4a3e;
+      --text:       #1c2e26;
+
       --font:         'DM Sans', sans-serif;
-      --font-heading: 'Playfair Display', serif;
+      --font-heading: 'Nunito', sans-serif;
       --radius:       8px;
-      --shadow:       0 4px 24px rgba(0,0,0,0.08);
+      --shadow:       0 4px 24px rgba(0,0,0,0.10);
       --transition:   0.25s ease;
     }
 
@@ -36,52 +47,49 @@
     ============================================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: var(--font); color: var(--text); background: var(--off-white); line-height: 1.6; }
+    body { font-family: var(--font); color: var(--text-dark); background: var(--chalk-cream); line-height: 1.6; }
     img  { display: block; max-width: 100%; border-radius: var(--radius); }
     a    { text-decoration: none; color: inherit; }
 
     /* ============================================================
        UTILITIES
     ============================================================ */
-    .container {
-      width: 90%;
-      max-width: 1160px;
-      margin: 0 auto;
-    }
-
+    .container { width: 90%; max-width: 1160px; margin: 0 auto; }
     .section { padding: 72px 0; }
 
     .section-label {
       display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 10px;
+      font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 10px;
     }
 
-    /* Buttons */
+    /* ── Buttons ── */
     .btn {
       display: inline-block;
-      padding: 13px 28px;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 0.95rem;
-      cursor: pointer;
-      border: 2px solid transparent;
+      padding: 13px 28px; border-radius: var(--radius);
+      font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; border: 2px solid transparent;
       transition: background var(--transition), color var(--transition), border-color var(--transition);
     }
-    .btn-primary { background: var(--navy); color: var(--white); }
-    .btn-primary:hover { background: var(--green); color: var(--navy); }
-    .btn-gold  { background: var(--green); color: var(--navy); border-color: var(--green); }
-    .btn-gold:hover  { background: var(--green-dark); border-color: var(--green-dark); }
+    .btn-primary { background: var(--chalk-board); color: var(--chalk-white); }
+    .btn-primary:hover { background: var(--amber); color: var(--chalk-dark); }
+
+    .btn-gold { background: var(--amber); color: var(--chalk-dark); border-color: var(--amber); }
+    .btn-gold:hover { background: var(--amber-dark); border-color: var(--amber-dark); color: var(--chalk-dark); }
+
     .btn-outline-white {
-      background: transparent;
-      color: var(--white);
-      border-color: rgba(255,255,255,0.5);
+      background: transparent; color: var(--chalk-white);
+      border-color: rgba(245,240,232,0.5);
     }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+    .btn-outline-white:hover { background: rgba(245,240,232,0.12); border-color: var(--chalk-white); }
+
+    /* ── Chalk doodles ── */
+    .chalk-doodle {
+      position: absolute;
+      pointer-events: none; z-index: 0; opacity: 0.18;
+    }
+    @media (max-width: 640px) { .chalk-doodle { display: none; } }
 
     /* ============================================================
        NAVBAR
@@ -92,218 +100,138 @@
       border-bottom: 1px solid var(--gray-light);
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
-    .navbar__inner {
-      display: flex; align-items: center; justify-content: space-between; height: 68px;
-    }
+    .navbar__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .navbar__logo {
       display: flex; align-items: center; gap: 10px;
       font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800;
-      color: var(--navy); letter-spacing: -0.01em;
+      color: var(--text-dark);
     }
-    .navbar__logo-icon {
-      width: 36px; height: 36px; background: var(--green); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .navbar__logo-icon svg { width: 22px; height: 22px; fill: var(--navy); }
-    .navbar__links {
-      display: flex; align-items: center; gap: 32px; list-style: none;
-    }
-    .navbar__links a {
-      font-size: 0.9rem; font-weight: 600; color: var(--navy);
-      transition: color var(--transition);
-    }
-    .navbar__links a:hover { color: var(--green); }
-    .navbar__links .nav-cta a {
-      background: var(--navy); color: var(--white);
-      padding: 9px 20px; border-radius: var(--radius);
-    }
-    .navbar__links .nav-cta a:hover { background: var(--green); color: var(--navy); }
-    .navbar__toggle {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px;
-    }
-    .navbar__toggle span {
-      display: block; width: 24px; height: 2px; background: var(--navy);
-      border-radius: 2px; transition: all var(--transition);
-    }
+    .navbar__logo-icon { width: 36px; height: 36px; background: var(--amber); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .navbar__logo-icon svg { width: 22px; height: 22px; fill: var(--chalk-dark); }
+    .navbar__links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .navbar__links a { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); transition: color var(--transition); }
+    .navbar__links a:hover { color: var(--amber); }
+    .navbar__links .nav-cta a { background: var(--chalk-board); color: var(--chalk-white); padding: 9px 20px; border-radius: var(--radius); }
+    .navbar__links .nav-cta a:hover { background: var(--amber); color: var(--chalk-dark); }
+    .navbar__toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .navbar__toggle span { display: block; width: 24px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all var(--transition); }
 
     /* ============================================================
-       PAGE HERO
+       PAGE HERO — chalkboard green with chalk text
     ============================================================ */
     .page-hero {
-      background: var(--dark-bg); color: var(--white);
+      background: var(--chalk-board); color: var(--chalk-white);
       padding: 80px 0 72px; text-align: center;
+      position: relative; overflow: hidden;
     }
+    .page-hero .container { position: relative; z-index: 1; }
     .page-hero__eyebrow {
       display: inline-block;
-      background: rgba(200,168,75,0.15); color: var(--green);
+      background: var(--amber-glow); color: var(--amber);
       font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
       padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+      border: 1px solid rgba(245,183,49,0.3);
     }
     .page-hero__heading {
       font-family: var(--font-heading);
       font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px;
+      font-weight: 900; line-height: 1.15; margin-bottom: 20px;
+      color: var(--chalk-white);
     }
-    .page-hero__heading em { font-style: normal; color: var(--green); }
-    .page-hero__sub {
-      font-size: 1.15rem; color: rgba(255,255,255,0.75);
-      max-width: 500px; margin: 0 auto;
-    }
+    .page-hero__heading em { font-style: normal; color: var(--amber); }
+    .page-hero__sub { font-size: 1.15rem; color: rgba(245,240,232,0.75); max-width: 500px; margin: 0 auto; }
 
     /* ============================================================
        TWO-OPTION GRID
     ============================================================ */
     .options-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: stretch;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 28px; align-items: stretch;
     }
 
-    /* Shared card shell */
     .option-card {
-      border-radius: 16px;
-      padding: 44px 40px;
-      display: flex;
-      flex-direction: column;
+      border-radius: 16px; padding: 44px 40px;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
     }
 
-    /* ── Left card: "Open a Door" ── */
+    /* ── Left card: "Open a Door" — warm light ── */
     .option-card--light {
       background: var(--white);
       border: 1px solid var(--gray-light);
       box-shadow: var(--shadow);
     }
 
-    /* ── Right card: "Become a Donor" ── */
+    /* ── Right card: "Become a Donor" — chalkboard green ── */
     .option-card--dark {
-      background: var(--dark-bg);
-      color: var(--white);
+      background: var(--chalk-board);
+      color: var(--chalk-white);
     }
-    .option-card--dark .section-label { color: var(--green); }
+    .option-card--dark .section-label { color: var(--amber); }
 
     .option-card__heading {
       font-family: var(--font-heading);
       font-size: clamp(1.6rem, 2.8vw, 2.1rem);
-      font-weight: 800;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
+      font-weight: 800; line-height: 1.2; margin-bottom: 14px;
     }
-    .option-card--light .option-card__heading { color: var(--navy); }
-    .option-card--dark  .option-card__heading { color: var(--white); }
+    .option-card--light .option-card__heading { color: var(--text-dark); }
+    .option-card--dark  .option-card__heading { color: var(--chalk-white); }
 
-    .option-card__subhead {
-      font-size: 1rem;
-      line-height: 1.65;
-      margin-bottom: 24px;
-    }
+    .option-card__subhead { font-size: 1rem; line-height: 1.65; margin-bottom: 24px; }
     .option-card--light .option-card__subhead { color: var(--gray); }
-    .option-card--dark  .option-card__subhead { color: rgba(255,255,255,0.7); }
+    .option-card--dark  .option-card__subhead { color: rgba(245,240,232,0.7); }
 
     /* ── Connect items (left card) ── */
-    .connect__list {
-      list-style: none;
-      display: flex; flex-direction: column; gap: 18px;
-      margin-bottom: 32px;
-      flex: 1;
-    }
-    .connect__item {
-      display: flex; gap: 14px; align-items: flex-start;
-    }
+    .connect__list { list-style: none; display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; flex: 1; }
+    .connect__item { display: flex; gap: 14px; align-items: flex-start; }
     .connect__item-icon {
-      flex-shrink: 0;
-      width: 36px; height: 36px;
-      background: rgba(200,168,75,0.12);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
+      flex-shrink: 0; width: 36px; height: 36px;
+      background: var(--amber-glow);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem;
     }
-    .connect__item-text strong {
-      display: block; font-weight: 700; color: var(--navy);
-      margin-bottom: 1px; font-size: 0.95rem;
-    }
+    .connect__item-text strong { display: block; font-weight: 700; color: var(--text-dark); margin-bottom: 1px; font-size: 0.95rem; }
     .connect__item-text span { font-size: 0.88rem; color: var(--gray); }
 
     /* ── Donor goal badge ── */
     .monthly-goal {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(200,168,75,0.12);
-      border: 1px solid rgba(200,168,75,0.3);
+      background: rgba(245,183,49,0.14);
+      border: 1px solid rgba(245,183,49,0.3);
       border-radius: var(--radius);
-      padding: 8px 16px;
-      margin-bottom: 24px;
-      font-size: 0.88rem; font-weight: 600; color: var(--green);
+      padding: 8px 16px; margin-bottom: 24px;
+      font-size: 0.88rem; font-weight: 600; color: var(--amber);
     }
 
     /* ── Donor tier list (right card) ── */
-    .donor-tiers {
-      list-style: none;
-      margin-bottom: 20px;
-    }
+    .donor-tiers { list-style: none; margin-bottom: 20px; }
     .donor-tier {
       display: flex; gap: 14px; align-items: baseline;
       padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(245,240,232,0.10);
     }
-    .donor-tier:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
-    .donor-tier__amount {
-      font-size: 1.05rem; font-weight: 800;
-      color: var(--green);
-      white-space: nowrap;
-      min-width: 76px;
-    }
-    .donor-tier__impact {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.5;
-    }
+    .donor-tier:first-child { border-top: 1px solid rgba(245,240,232,0.10); }
+    .donor-tier__amount { font-size: 1.05rem; font-weight: 800; color: var(--amber); white-space: nowrap; min-width: 76px; }
+    .donor-tier__impact { font-size: 0.88rem; color: rgba(245,240,232,0.72); line-height: 1.5; }
 
     /* ── One-time note ── */
-    .donor-note {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.6;
-      margin-bottom: 28px;
-      font-style: italic;
-    }
+    .donor-note { font-size: 0.88rem; color: rgba(245,240,232,0.55); line-height: 1.6; margin-bottom: 28px; font-style: italic; }
 
     /* ── CTA row ── */
-    .card-ctas {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      margin-top: auto;
-    }
+    .card-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto; }
 
     /* ============================================================
        FOOTER
     ============================================================ */
-    .footer {
-      background: var(--dark-bg); color: rgba(255,255,255,0.7);
-      padding: 60px 0 36px;
-    }
-    .footer__inner {
-      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;
-    }
-    .footer__logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;
-      color: var(--white); letter-spacing: -0.01em;
-    }
-    .footer__logo-icon {
-      width: 32px; height: 32px; background: var(--green); border-radius: 7px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .footer__logo-icon svg { width: 20px; height: 20px; fill: var(--navy); }
+    .footer { background: var(--chalk-dark); color: rgba(245,240,232,0.7); padding: 60px 0 36px; }
+    .footer__inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+    .footer__logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; color: var(--chalk-white); }
+    .footer__logo-icon { width: 32px; height: 32px; background: var(--amber); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+    .footer__logo-icon svg { width: 20px; height: 20px; fill: var(--chalk-dark); }
     .footer__mission { max-width: 520px; font-size: 0.95rem; line-height: 1.7; }
-    .footer__social a {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 600;
-      transition: color var(--transition);
-    }
-    .footer__social a:hover { color: var(--white); }
+    .footer__social a { display: inline-flex; align-items: center; gap: 8px; color: rgba(245,240,232,0.7); font-size: 0.9rem; font-weight: 600; transition: color var(--transition); }
+    .footer__social a:hover { color: var(--chalk-white); }
     .footer__social svg { width: 20px; height: 20px; fill: currentColor; }
-    .footer__divider { width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin: 8px 0; }
+    .footer__divider { width: 100%; height: 1px; background: rgba(245,240,232,0.12); margin: 8px 0; }
     .footer__copy { font-size: 0.8rem; }
 
     /* ============================================================
@@ -313,13 +241,11 @@
       .options-grid { grid-template-columns: 1fr; }
       .option-card  { padding: 36px 28px; }
     }
-
     @media (max-width: 640px) {
       .section { padding: 56px 0; }
       .option-card { padding: 30px 22px; }
       .card-ctas { flex-direction: column; }
       .card-ctas .btn { text-align: center; }
-
       .navbar__links { display: none; flex-direction: column; gap: 0; }
       .navbar__links.open {
         display: flex; position: absolute; top: 68px; left: 0; width: 100%;
@@ -335,12 +261,9 @@
 </head>
 <body>
 
-  <!-- ============================================================
-       NAVBAR
-  ============================================================ -->
+  <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="container navbar__inner">
-
       <a class="navbar__logo" href="/" aria-label="Amazolar home">
         <div class="navbar__logo-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -364,48 +287,77 @@
     </div>
   </nav>
 
-  <!-- ============================================================
-       PAGE HERO
-  ============================================================ -->
+  <!-- PAGE HERO -->
   <section class="page-hero" aria-labelledby="join-heading">
+
+    <!-- Chalk doodle: lightbulb rays (top-right) -->
+    <svg class="chalk-doodle" style="top:20px;right:52px;width:80px;height:80px;" viewBox="0 0 100 100" fill="none" stroke="#f5b731" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="50" y1="6"  x2="50" y2="16"/>
+      <line x1="72" y1="12" x2="66" y2="20"/>
+      <line x1="86" y1="30" x2="76" y2="34"/>
+      <line x1="28" y1="12" x2="34" y2="20"/>
+      <line x1="14" y1="30" x2="24" y2="34"/>
+      <path d="M38 58 Q30 48 30 42 a20 20 0 0 1 40 0 Q70 48 62 58"/>
+      <line x1="38" y1="62" x2="62" y2="62"/>
+      <line x1="40" y1="68" x2="60" y2="68"/>
+      <line x1="44" y1="74" x2="56" y2="74"/>
+    </svg>
+
+    <!-- Chalk doodle: star (bottom-left) -->
+    <svg class="chalk-doodle" style="bottom:20px;left:48px;width:58px;height:58px;opacity:0.14;" viewBox="0 0 70 70" fill="none" stroke="#f5f0e8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M35 5 L41 24 L62 24 L46 37 L52 58 L35 46 L18 58 L24 37 L8 24 L29 24 Z"/>
+    </svg>
+
     <div class="container">
       <div class="page-hero__eyebrow">Support Our Mission</div>
       <h1 class="page-hero__heading" id="join-heading">
         Join the <em>Light</em>
       </h1>
-      <p class="page-hero__sub">
-        Every kind of support opens a door for a student.
-      </p>
+      <p class="page-hero__sub">Every kind of support opens a door for a student.</p>
     </div>
   </section>
 
-  <!-- ============================================================
-       TWO OPTIONS — side by side
-  ============================================================ -->
+  <!-- TWO OPTIONS -->
   <section class="section" aria-label="Ways to support Amazolar">
     <div class="container">
       <div class="options-grid">
 
         <!-- ── OPTION 1: Open a Door ── -->
         <article class="option-card option-card--light" id="connect" aria-labelledby="connect-heading">
+
+          <!-- Chalk doodle: door (top-right corner of card) -->
+          <svg class="chalk-doodle" style="top:16px;right:16px;width:44px;height:64px;opacity:0.15;" viewBox="0 0 52 76" fill="none" stroke="#f5b731" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="46" height="70" rx="2"/>
+            <rect x="9"  y="10" width="14" height="20" rx="2"/>
+            <rect x="29" y="10" width="14" height="20" rx="2"/>
+            <rect x="9"  y="38" width="34" height="26" rx="2"/>
+            <circle cx="36" cy="51" r="2.5"/>
+          </svg>
+
           <span class="section-label">Connect Us</span>
           <h2 class="option-card__heading" id="connect-heading">Open a Door</h2>
-          <p class="option-card__subhead">
-            Not every kind of help is a check. Most of you can open a door we can't:
-          </p>
+          <p class="option-card__subhead">Not every kind of help is a check. Most of you can open a door we can't:</p>
 
           <ul class="connect__list" id="connect-list" aria-label="Ways to connect us">
             <!-- rendered by JS -->
           </ul>
 
           <div class="card-ctas">
-            <a id="connect-cta" href="#" class="btn btn-primary"
-               target="_blank" rel="noopener noreferrer">Open a Door</a>
+            <a id="connect-cta" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Open a Door</a>
           </div>
         </article>
 
         <!-- ── OPTION 2: Become a Donor ── -->
         <article class="option-card option-card--dark" id="donate" aria-labelledby="donate-heading">
+
+          <!-- Chalk doodle: sparkle rays (bottom-right corner) -->
+          <svg class="chalk-doodle" style="bottom:16px;right:16px;width:52px;height:52px;opacity:0.12;" viewBox="0 0 60 60" fill="none" stroke="#f5b731" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="30" y1="4"  x2="30" y2="56"/>
+            <line x1="4"  y1="30" x2="56" y2="30"/>
+            <line x1="9"  y1="9"  x2="51" y2="51"/>
+            <line x1="51" y1="9"  x2="9"  y2="51"/>
+          </svg>
+
           <span class="section-label">Individual Giving</span>
           <h2 class="option-card__heading" id="donate-heading">Become a Donor</h2>
 
@@ -420,9 +372,7 @@
             <!-- rendered by JS -->
           </ul>
 
-          <p class="donor-note">
-            We're also more than happy to accept one-time donations — whatever is easiest.
-          </p>
+          <p class="donor-note">We're also more than happy to accept one-time donations — whatever is easiest.</p>
 
           <div class="card-ctas">
             <a id="donate-monthly-cta" href="#" class="btn btn-gold">Give Monthly</a>
@@ -434,12 +384,9 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
+  <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container footer__inner">
-
       <div class="footer__logo">
         <div class="footer__logo-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -448,13 +395,7 @@
         </div>
         Amazolar
       </div>
-
-      <p class="footer__mission">
-        Amazolar is a mission-driven initiative partnering with under-resourced schools
-        in Ecuador to support teachers and empower students through the transformative
-        power of solar energy.
-      </p>
-
+      <p class="footer__mission">Amazolar is a mission-driven initiative partnering with under-resourced schools in Ecuador to support teachers and empower students through the transformative power of solar energy.</p>
       <div class="footer__social">
         <a href="https://www.linkedin.com/company/amazolar" target="_blank" rel="noopener noreferrer" aria-label="Amazolar on LinkedIn">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -463,7 +404,6 @@
           Follow us on LinkedIn
         </a>
       </div>
-
       <div class="footer__divider"></div>
       <p class="footer__copy">&copy; 2025 Amazolar. All rights reserved.</p>
     </div>
@@ -471,23 +411,14 @@
 
   <style>.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }</style>
 
-  <!-- Links config (edit links.js to wire up real URLs) -->
   <script src="links.js"></script>
 
   <script>
-    // ============================================================
-    // DATA ARRAYS — edit these to update page content
-    // ============================================================
-
     const CONNECT_ITEMS = [
-      { icon: '🧭', label: 'Guide us',
-        desc: 'Join our advisory circle and meet with us monthly as we scale.' },
-      { icon: '🌎', label: 'Connect us in Ecuador',
-        desc: 'A school, employer, or community you trust.' },
-      { icon: '🏢', label: 'Champion us at work',
-        desc: 'A company sponsorship or workplace fundraiser.' },
-      { icon: '⚖️', label: 'Lend your expertise',
-        desc: 'Legal, accounting, or design as we expand our organization.' },
+      { icon: '🧭', label: 'Guide us',             desc: 'Join our advisory circle and meet with us monthly as we scale.' },
+      { icon: '🌎', label: 'Connect us in Ecuador', desc: 'A school, employer, or community you trust.' },
+      { icon: '🏢', label: 'Champion us at work',   desc: 'A company sponsorship or workplace fundraiser.' },
+      { icon: '⚖️', label: 'Lend your expertise',   desc: 'Legal, accounting, or design as we expand our organization.' },
     ];
 
     const MONTHLY_TIERS = [
@@ -496,10 +427,6 @@
       { amount: '$250/mo',   impact: 'Powers a full workshop each month: lunch, supplies, and speakers' },
       { amount: '$1,000/mo', impact: 'Sustains our lead facilitator month over month' },
     ];
-
-    // ============================================================
-    // RENDERERS
-    // ============================================================
 
     function renderConnectItems() {
       document.getElementById('connect-list').innerHTML = CONNECT_ITEMS.map(item => `
@@ -523,12 +450,11 @@
     }
 
     function wireLinks() {
-      document.getElementById('connect-cta').href      = LINKS.CONNECT_ACTION;
+      document.getElementById('connect-cta').href        = LINKS.CONNECT_ACTION;
       document.getElementById('donate-monthly-cta').href = LINKS.DONATE_MONTHLY_URL;
-      document.getElementById('donate-once-cta').href  = LINKS.DONATE_ONCE_URL;
+      document.getElementById('donate-once-cta').href    = LINKS.DONATE_ONCE_URL;
     }
 
-    // Mobile nav toggle
     const toggle   = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
     toggle.addEventListener('click', () => {
@@ -542,7 +468,6 @@
       });
     });
 
-    // Init
     document.addEventListener('DOMContentLoaded', () => {
       renderConnectItems();
       renderMonthlyTiers();
