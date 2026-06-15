@@ -231,6 +231,63 @@
     .footer__copy { font-size: 0.8rem; }
 
     /* ============================================================
+       TOP ACTION BAR
+    ============================================================ */
+    .action-bar {
+      background: #ffffff;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .action-bar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+    .action-bar__msg {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #f08026;
+      font-size: clamp(1rem, 2.2vw, 1.6rem);
+      margin: 0;
+      line-height: 1;
+    }
+    .action-bar__donate {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #f08026;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+      padding: 12px 28px;
+      text-decoration: none;
+      box-shadow: 8px 8px 0 0 #d49b20;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      white-space: nowrap;
+    }
+    .action-bar__donate:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 4px 4px 0 0 #d49b20;
+    }
+
+    @media (max-width: 600px) {
+      .action-bar__inner {
+        flex-wrap: wrap;
+        padding: 10px 0;
+        gap: 12px;
+      }
+      .action-bar__msg { font-size: 0.95rem; }
+      .action-bar__donate { font-size: 0.85rem; padding: 10px 20px; }
+    }
+
+    /* ============================================================
        RESPONSIVE
     ============================================================ */
     @media (max-width: 800px) {
@@ -256,6 +313,14 @@
   </style>
 </head>
 <body>
+
+  <!-- TOP ACTION BAR -->
+  <div class="action-bar">
+    <div class="container action-bar__inner">
+      <p class="action-bar__msg">Make a difference in 2026</p>
+      <a href="/join" class="action-bar__donate">Donate <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
