@@ -267,20 +267,36 @@
       box-shadow: 4px 4px 0 0 #d49b20;
     }
 
-    .hero__photo {
+    .hero__slides {
+      position: relative;
       width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 0 !important;
+      aspect-ratio: 7 / 5;
+      overflow: hidden;
+      border-radius: 0;
       box-shadow: 14px 14px 0 0 var(--orange);
+      display: block;
     }
+
+    .hero__slides img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 0 !important;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .hero__slides img.active { opacity: 1; }
 
     @media (max-width: 700px) {
       .hero { padding-top: 48px; }
       .hero__bottom { grid-template-columns: 1fr; }
       .hero__bottom-right { order: -1; margin-bottom: 28px; margin-top: 0; }
       .hero__bottom-left { padding: 0 0 40px; }
-      .hero__photo { box-shadow: 8px 8px 0 0 var(--orange); }
+      .hero__slides { box-shadow: 8px 8px 0 0 var(--orange); }
     }
 
     /* ============================================================
@@ -586,12 +602,12 @@
           <a href="/join" class="hero__cta">Join the Light! &nbsp;→</a>
         </div>
         <div class="hero__bottom-right">
-          <img
-            class="hero__photo"
-            src="students.png"
-            alt="Amazolar students holding participation certificates"
-            loading="eager"
-          />
+          <div class="hero__slides" id="heroSlides">
+            <img src="students.png"   class="active" alt="Amazolar students proudly holding participation certificates" loading="eager" />
+            <img src="students2.jpg"  alt="Students gathered at an Amazolar program event in Ecuador" loading="eager" />
+            <img src="students3.jpg"  alt="Young learners engaged in an Amazolar workshop activity" loading="eager" />
+            <img src="students4.jpg"  alt="Amazolar participants celebrating their achievements together" loading="eager" />
+          </div>
         </div>
       </div>
     </div>
@@ -862,6 +878,26 @@
         navLangBtn.setAttribute('aria-expanded', 'false');
       });
     });
+
+    // ── Hero slideshow ──
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const slides   = Array.from(document.querySelectorAll('#heroSlides img'));
+      const container = document.getElementById('heroSlides');
+      let current = 0;
+      let paused  = false;
+
+      function advance() {
+        if (paused) return;
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }
+
+      const timer = setInterval(advance, 7000);
+      container.addEventListener('mouseenter', () => { paused = true; });
+      container.addEventListener('mouseleave', () => { paused = false; });
+    })();
 
     // ── Newsletter ──
     function handleSubscribe(e) {
