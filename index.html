@@ -259,13 +259,22 @@
     .hero__slides {
       position: relative;
       width: 55%;
-      margin: 0 auto 0;
+      margin: 0 auto;
       aspect-ratio: 7 / 5;
-      overflow: hidden;
+      overflow: visible;
       border-radius: 0;
       box-shadow: 14px 14px 0 0 var(--orange);
       display: block;
       z-index: 2;
+    }
+
+    /* clip images to the box even though the container is overflow: visible */
+    .hero__slides::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .hero__slides img {
@@ -278,18 +287,19 @@
       border-radius: 0 !important;
       opacity: 0;
       transition: opacity 0.8s ease;
+      overflow: hidden;
     }
 
     .hero__slides img.active { opacity: 1; }
 
     .photo-band {
-      position: static;
-      clip-path: none;
-      display: block;
-      width: fit-content;
-      margin: 0 auto 24px;
-      background: #f08026;
-      padding: 18px 40px 26px 32px;
+      position: absolute;
+      right: -10px;
+      bottom: -8px;
+      margin: 0; padding: 0;
+      background: transparent;
+      text-align: right;
+      z-index: 4;
     }
     .photo-band span {
       white-space: nowrap;
@@ -298,12 +308,22 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       line-height: 1;
-      font-size: clamp(1.6rem, 5vw, 3.4rem);
+      font-size: clamp(1.6rem, 5vw, 3.2rem);
       color: #f5ecd9;
       text-shadow:
-        -1px 1px 0 #b5560f, -2px 2px 0 #b5560f, -3px 3px 0 #b5560f, -4px 4px 0 #b5560f,
-        -5px 5px 0 #b5560f, -6px 6px 0 #b5560f, -7px 7px 0 #b5560f, -8px 8px 0 #b5560f,
-        -9px 9px 0 #b5560f, -10px 10px 0 #b5560f, -11px 11px 0 #b5560f, -12px 12px 0 #b5560f;
+        -1px 1px 0 #f1a712, -2px 2px 0 #f1a712, -3px 3px 0 #f1a712, -4px 4px 0 #f1a712,
+        -5px 5px 0 #f1a712, -6px 6px 0 #f1a712, -7px 7px 0 #f1a712, -8px 8px 0 #f1a712,
+        -9px 9px 0 #f1a712, -10px 10px 0 #f1a712, -11px 11px 0 #f1a712, -12px 12px 0 #f1a712,
+        -13px 13px 0 #f1a712, -14px 14px 0 #f1a712, -15px 15px 0 #f1a712, -16px 16px 0 #f1a712,
+        -17px 17px 0 #f1a712, -18px 18px 0 #f1a712, -19px 19px 0 #f1a712, -20px 20px 0 #f1a712,
+        -21px 21px 0 #f1a712, -22px 22px 0 #f1a712, -23px 23px 0 #f1a712, -24px 24px 0 #f1a712,
+        -25px 25px 0 #f1a712, -26px 26px 0 #f1a712, -27px 27px 0 #f1a712, -28px 28px 0 #f1a712,
+        -29px 29px 0 #f1a712, -30px 30px 0 #f1a712, -31px 31px 0 #f1a712, -32px 32px 0 #f1a712,
+        -33px 33px 0 #f1a712, -34px 34px 0 #f1a712, -35px 35px 0 #f1a712, -36px 36px 0 #f1a712,
+        -37px 37px 0 #f1a712, -38px 38px 0 #f1a712, -39px 39px 0 #f1a712, -40px 40px 0 #f1a712,
+        -41px 41px 0 #f1a712, -42px 42px 0 #f1a712, -43px 43px 0 #f1a712, -44px 44px 0 #f1a712,
+        -45px 45px 0 #f1a712, -46px 46px 0 #f1a712, -47px 47px 0 #f1a712, -48px 48px 0 #f1a712,
+        -49px 49px 0 #f1a712, -50px 50px 0 #f1a712;
     }
 
     @media (max-width: 700px) {
@@ -610,12 +630,12 @@
   <section class="hero" id="home" aria-labelledby="hero-heading">
     <div class="container">
       <h1 class="hero__headline" id="hero-heading">Empowering Minds<br>&amp; Shaping Futures</h1>
-      <div class="photo-band"><span>INSPIRE CHANGE</span></div>
       <div class="hero__slides" id="heroSlides">
         <img src="students.png"  class="active" alt="Amazolar students proudly holding participation certificates" loading="eager" />
         <img src="students2.jpg" alt="Students gathered at an Amazolar program event in Ecuador" loading="eager" />
         <img src="students3.jpg" alt="Young learners engaged in an Amazolar workshop activity" loading="eager" />
         <img src="students4.jpg" alt="Amazolar participants celebrating their achievements together" loading="eager" />
+        <div class="photo-band"><span>INSPIRE CHANGE</span></div>
       </div>
       <div class="hero__cta-row">
         <a href="/join" class="hero__cta">Join the Light! &nbsp;→</a>
