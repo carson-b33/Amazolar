@@ -263,7 +263,7 @@
       aspect-ratio: 7 / 5;
       overflow: visible;
       border-radius: 0;
-      box-shadow: 14px 14px 0 0 var(--orange);
+      box-shadow: -14px 14px 0 0 var(--orange);
       display: block;
       z-index: 2;
     }
@@ -294,8 +294,8 @@
 
     .photo-band {
       position: absolute;
-      right: -10px;
-      bottom: -8px;
+      right: -45px;
+      bottom: 10px;
       margin: 0; padding: 0;
       background: transparent;
       text-align: right;
@@ -308,7 +308,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       line-height: 1;
-      font-size: clamp(1.6rem, 5vw, 3.2rem);
+      font-size: clamp(2rem, 6vw, 4rem);
       color: #f5ecd9;
       text-shadow:
         -1px 1px 0 #f1a712, -2px 2px 0 #f1a712, -3px 3px 0 #f1a712, -4px 4px 0 #f1a712,
@@ -328,7 +328,7 @@
 
     @media (max-width: 700px) {
       .hero { padding-top: 48px; }
-      .hero__slides { width: 90%; box-shadow: 8px 8px 0 0 var(--orange); }
+      .hero__slides { width: 90%; box-shadow: -8px 8px 0 0 var(--orange); }
       .hero__cta-row { padding: 24px 0 40px; }
     }
 
