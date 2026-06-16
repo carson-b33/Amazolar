@@ -259,7 +259,7 @@
     .hero__slides {
       position: relative;
       width: 55%;
-      margin: -1.5em auto 0;
+      margin: 0 auto 0;
       aspect-ratio: 7 / 5;
       overflow: hidden;
       border-radius: 0;
@@ -283,45 +283,32 @@
     .hero__slides img.active { opacity: 1; }
 
     .photo-band {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
+      position: static;
+      clip-path: none;
+      display: block;
+      width: fit-content;
+      margin: 0 auto 24px;
       background: #f08026;
-      clip-path: polygon(0 42%, 100% 0%, 100% 100%, 0% 100%);
-      padding: 36px 28px 30px 34px;
-      display: flex;
-      align-items: flex-end;
-      z-index: 3;
+      padding: 18px 40px 26px 32px;
     }
     .photo-band span {
+      white-space: nowrap;
       font-family: 'Montserrat', sans-serif;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 1px;
       line-height: 1;
-      font-size: clamp(2rem, 6vw, 4rem);
+      font-size: clamp(1.6rem, 5vw, 3.4rem);
       color: #f5ecd9;
       text-shadow:
-        -1px 1px 0 #b5560f,
-        -2px 2px 0 #b5560f,
-        -3px 3px 0 #b5560f,
-        -4px 4px 0 #b5560f,
-        -5px 5px 0 #b5560f,
-        -6px 6px 0 #b5560f,
-        -7px 7px 0 #b5560f,
-        -8px 8px 0 #b5560f,
-        -9px 9px 0 #b5560f,
-        -10px 10px 0 #b5560f,
-        -11px 11px 0 #b5560f,
-        -12px 12px 0 #b5560f,
-        -13px 13px 0 #b5560f,
-        -14px 14px 0 #b5560f,
-        -15px 15px 0 #b5560f,
-        -16px 16px 0 #b5560f;
+        -1px 1px 0 #b5560f, -2px 2px 0 #b5560f, -3px 3px 0 #b5560f, -4px 4px 0 #b5560f,
+        -5px 5px 0 #b5560f, -6px 6px 0 #b5560f, -7px 7px 0 #b5560f, -8px 8px 0 #b5560f,
+        -9px 9px 0 #b5560f, -10px 10px 0 #b5560f, -11px 11px 0 #b5560f, -12px 12px 0 #b5560f;
     }
 
     @media (max-width: 700px) {
       .hero { padding-top: 48px; }
-      .hero__slides { width: 90%; margin-top: 0; box-shadow: 8px 8px 0 0 var(--orange); }
+      .hero__slides { width: 90%; box-shadow: 8px 8px 0 0 var(--orange); }
       .hero__cta-row { padding: 24px 0 40px; }
     }
 
@@ -623,12 +610,12 @@
   <section class="hero" id="home" aria-labelledby="hero-heading">
     <div class="container">
       <h1 class="hero__headline" id="hero-heading">Empowering Minds<br>&amp; Shaping Futures</h1>
+      <div class="photo-band"><span>INSPIRE CHANGE</span></div>
       <div class="hero__slides" id="heroSlides">
         <img src="students.png"  class="active" alt="Amazolar students proudly holding participation certificates" loading="eager" />
         <img src="students2.jpg" alt="Students gathered at an Amazolar program event in Ecuador" loading="eager" />
         <img src="students3.jpg" alt="Young learners engaged in an Amazolar workshop activity" loading="eager" />
         <img src="students4.jpg" alt="Amazolar participants celebrating their achievements together" loading="eager" />
-        <div class="photo-band"><span>INSPIRE CHANGE</span></div>
       </div>
       <div class="hero__cta-row">
         <a href="/join" class="hero__cta">Join the Light! &nbsp;→</a>
