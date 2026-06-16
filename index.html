@@ -229,22 +229,6 @@
       margin-bottom: 16px; padding-bottom: 0;
     }
 
-    .hero__bottom {
-      display: grid;
-      grid-template-columns: 42% 58%;
-      align-items: end;
-    }
-
-    .hero__bottom-left { padding: 0 32px 56px 0; position: relative; z-index: 3; }
-
-    .hero__bottom-right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      position: relative; z-index: 2;
-      margin-top: -2em;
-    }
-
     .hero__cta {
       display: inline-flex;
       align-items: center;
@@ -267,14 +251,21 @@
       box-shadow: 4px 4px 0 0 #d49b20;
     }
 
+    .hero__cta-row {
+      padding: 32px 0 56px;
+      position: relative; z-index: 3;
+    }
+
     .hero__slides {
       position: relative;
-      width: 100%;
+      width: 55%;
+      margin: -1.5em auto 0;
       aspect-ratio: 7 / 5;
       overflow: hidden;
       border-radius: 0;
       box-shadow: 14px 14px 0 0 var(--orange);
       display: block;
+      z-index: 2;
     }
 
     .hero__slides img {
@@ -291,12 +282,30 @@
 
     .hero__slides img.active { opacity: 1; }
 
+    .photo-band {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      background: #f08026;
+      clip-path: polygon(0 42%, 100% 0%, 100% 100%, 0% 100%);
+      padding: 30px 28px 22px;
+      display: flex;
+      align-items: flex-end;
+      z-index: 3;
+    }
+    .photo-band span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1;
+      font-size: clamp(1.3rem, 4vw, 2.6rem);
+      color: #f5ecd9;
+    }
+
     @media (max-width: 700px) {
       .hero { padding-top: 48px; }
-      .hero__bottom { grid-template-columns: 1fr; }
-      .hero__bottom-right { order: -1; margin-bottom: 28px; margin-top: 0; }
-      .hero__bottom-left { padding: 0 0 40px; }
-      .hero__slides { box-shadow: 8px 8px 0 0 var(--orange); }
+      .hero__slides { width: 90%; margin-top: 0; box-shadow: 8px 8px 0 0 var(--orange); }
+      .hero__cta-row { padding: 24px 0 40px; }
     }
 
     /* ============================================================
@@ -597,18 +606,15 @@
   <section class="hero" id="home" aria-labelledby="hero-heading">
     <div class="container">
       <h1 class="hero__headline" id="hero-heading">Empowering Minds<br>&amp; Shaping Futures</h1>
-      <div class="hero__bottom">
-        <div class="hero__bottom-left">
-          <a href="/join" class="hero__cta">Join the Light! &nbsp;→</a>
-        </div>
-        <div class="hero__bottom-right">
-          <div class="hero__slides" id="heroSlides">
-            <img src="students.png"   class="active" alt="Amazolar students proudly holding participation certificates" loading="eager" />
-            <img src="students2.jpg"  alt="Students gathered at an Amazolar program event in Ecuador" loading="eager" />
-            <img src="students3.jpg"  alt="Young learners engaged in an Amazolar workshop activity" loading="eager" />
-            <img src="students4.jpg"  alt="Amazolar participants celebrating their achievements together" loading="eager" />
-          </div>
-        </div>
+      <div class="hero__slides" id="heroSlides">
+        <img src="students.png"  class="active" alt="Amazolar students proudly holding participation certificates" loading="eager" />
+        <img src="students2.jpg" alt="Students gathered at an Amazolar program event in Ecuador" loading="eager" />
+        <img src="students3.jpg" alt="Young learners engaged in an Amazolar workshop activity" loading="eager" />
+        <img src="students4.jpg" alt="Amazolar participants celebrating their achievements together" loading="eager" />
+        <div class="photo-band"><span>INSPIRE CHANGE</span></div>
+      </div>
+      <div class="hero__cta-row">
+        <a href="/join" class="hero__cta">Join the Light! &nbsp;→</a>
       </div>
     </div>
   </section>
