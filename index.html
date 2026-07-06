@@ -1,943 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amazolar – Empowering Ecuador's Schools Through Solar Energy</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazolar — Every Student Deserves a Pathway</title>
+  <meta name="description" content="Amazolar equips under-resourced students in Ecuador with the guidance, skills, and connections to build a life of their choosing.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-
-  <style>
-    /* ============================================================
-       CSS VARIABLES – bold editorial palette
-    ============================================================ */
-    :root {
-      --orange:     #f08026;
-      --gold:       #f1a712;
-      --navy:       #455280;
-      --teal:       #6ac5c7;
-      --red:        #d41f00;
-      --white:      #ffffff;
-      --black:      #000000;
-      --gray:       #707070;
-      --gray-light: #cccccc;
-      --off-white:  #f0f0f0;
-
-      --font:         'Montserrat', sans-serif;
-      --font-heading: 'Montserrat', sans-serif;
-      --radius:       2px;
-      --shadow:       0 4px 16px rgba(0,0,0,0.08);
-      --shadow-btn:   4px 4px 0 rgba(0,0,0,0.22);
-      --transition:   0.2s ease;
-    }
-
-    /* ============================================================
-       RESET & BASE
-    ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.5; }
-    img  { display: block; max-width: 100%; border-radius: var(--radius); }
-    a    { text-decoration: none; color: inherit; }
-
-    /* ============================================================
-       UTILITIES
-    ============================================================ */
-    .container { width: 90%; max-width: 1160px; margin: 0 auto; }
-    .section { padding: 96px 0; }
-    .section--gray { background: var(--off-white); }
-
-    .section-label {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 12px;
-    }
-
-    .section-heading {
-      font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 4vw, 38px);
-      font-weight: 900;
-      color: var(--black);
-      line-height: 1.25;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .section-sub { font-size: 1rem; color: var(--gray); max-width: 620px; line-height: 1.6; }
-
-    /* ── Buttons ── */
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: var(--radius);
-      font-family: var(--font);
-      font-weight: 700;
-      font-size: 0.82rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: background var(--transition), color var(--transition), box-shadow var(--transition);
-    }
-
-    .btn-primary {
-      background: var(--orange);
-      color: var(--white);
-      box-shadow: var(--shadow-btn);
-    }
-    .btn-primary:hover { background: var(--red); box-shadow: 2px 2px 0 rgba(0,0,0,0.22); }
-
-    .btn-hero-cta {
-      background: var(--orange);
-      color: var(--white);
-      font-size: 1rem;
-      padding: 18px 44px;
-      letter-spacing: 2px;
-      box-shadow: 5px 5px 0 rgba(0,0,0,0.28);
-    }
-    .btn-hero-cta:hover { background: var(--red); box-shadow: 2px 2px 0 rgba(0,0,0,0.28); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--black);
-      border-color: var(--black);
-    }
-    .btn-outline:hover { background: var(--black); color: var(--white); }
-
-    .btn-white {
-      background: var(--white);
-      color: var(--black);
-      box-shadow: var(--shadow-btn);
-    }
-    .btn-white:hover { background: var(--off-white); box-shadow: 2px 2px 0 rgba(0,0,0,0.22); }
-
-    /* ============================================================
-       NAVBAR
-    ============================================================ */
-    .navbar {
-      position: sticky; top: 0; z-index: 1000;
-      background: var(--gold);
-    }
-    .navbar__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-
-    .navbar__logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-heading); font-size: 1.25rem; font-weight: 900;
-      color: var(--white); letter-spacing: 1px; text-transform: uppercase;
-    }
-    .navbar__logo-icon {
-      width: 36px; height: 36px; background: rgba(255,255,255,0.25);
-      border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
-    }
-    .navbar__logo-icon svg { width: 22px; height: 22px; fill: var(--white); }
-
-    .navbar__links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .navbar__links a {
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-      color: var(--white); transition: opacity var(--transition);
-    }
-    .navbar__links a:hover { opacity: 0.72; }
-    .navbar__links .nav-cta a {
-      background: var(--orange); color: var(--white);
-      padding: 9px 20px; border-radius: var(--radius);
-      box-shadow: 3px 3px 0 rgba(0,0,0,0.2); opacity: 1;
-    }
-    .navbar__links .nav-cta a:hover { background: var(--red); box-shadow: none; opacity: 1; }
-
-    /* nav right-side utilities */
-    .navbar__utils { display: flex; align-items: center; gap: 4px; }
-
-    /* search */
-    .nav-search { display: flex; align-items: center; position: relative; }
-    .nav-search__btn {
-      background: none; border: none; cursor: pointer; color: var(--white);
-      padding: 6px; display: flex; align-items: center; transition: opacity var(--transition);
-    }
-    .nav-search__btn:hover { opacity: 0.72; }
-    .nav-search__btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .nav-search__input {
-      width: 0; overflow: hidden; opacity: 0; border: none; background: transparent;
-      color: var(--white); font-family: var(--font); font-size: 0.9rem; padding: 0;
-      outline: none; border-bottom: 2px solid rgba(255,255,255,0.6);
-      transition: width 0.25s ease, opacity 0.25s ease, padding 0.25s ease;
-    }
-    .nav-search__input::placeholder { color: rgba(255,255,255,0.7); }
-    .nav-search.open .nav-search__input { width: 160px; opacity: 1; padding: 4px 8px; }
-    .nav-search__no-results {
-      display: none; position: absolute; top: calc(100% + 4px); left: 0;
-      background: var(--white); color: var(--red);
-      font-size: 0.75rem; font-weight: 700; padding: 4px 10px; white-space: nowrap;
-      box-shadow: var(--shadow);
-    }
-    .nav-search__no-results.visible { display: block; }
-
-    /* language picker */
-    .nav-lang { position: relative; }
-    .nav-lang__btn {
-      background: none; border: none; cursor: pointer; color: var(--white);
-      font-family: var(--font); font-size: 0.75rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      display: flex; align-items: center; gap: 4px; padding: 6px 8px;
-      transition: opacity var(--transition);
-    }
-    .nav-lang__btn:hover { opacity: 0.72; }
-    .nav-lang__btn .globe-icon { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
-    .nav-lang__dropdown {
-      display: none; position: absolute; top: calc(100% + 4px); right: 0;
-      background: var(--white); border: 1px solid var(--gray-light);
-      list-style: none; min-width: 72px; box-shadow: var(--shadow); z-index: 200;
-    }
-    .nav-lang.open .nav-lang__dropdown { display: block; }
-    .nav-lang__dropdown li button {
-      display: block; width: 100%; text-align: left; background: none; border: none; cursor: pointer;
-      font-family: var(--font); font-size: 0.82rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      padding: 10px 16px; color: var(--black); transition: background var(--transition);
-    }
-    .nav-lang__dropdown li button:hover { background: var(--off-white); }
-
-    .navbar__toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .navbar__toggle span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all var(--transition); }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
-    .hero {
-      position: relative; overflow: hidden;
-      background: var(--gold); color: var(--white);
-      text-align: left; padding-top: 64px;
-    }
-    .hero .container { position: relative; z-index: 2; }
-
-    .hero__headline {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 6vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white);
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      position: relative; z-index: 3;
-      margin-bottom: 16px; padding-bottom: 0;
-    }
-
-    .hero__cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--orange);
-      color: var(--white);
-      font-family: var(--font);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 1.05rem;
-      padding: 16px 36px;
-      text-decoration: none;
-      border-radius: 0;
-      box-shadow: 8px 8px 0 0 #d49b20;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .hero__cta:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 4px 4px 0 0 #d49b20;
-    }
-
-    .hero__cta-row {
-      padding: 32px 0 56px;
-      position: relative; z-index: 3;
-    }
-
-    .hero__slides {
-      position: relative;
-      width: 55%;
-      margin: 0 auto;
-      aspect-ratio: 7 / 5;
-      overflow: visible;
-      border-radius: 0;
-      box-shadow: -14px 14px 0 0 var(--orange);
-      display: block;
-      z-index: 2;
-    }
-
-    /* clip images to the box even though the container is overflow: visible */
-    .hero__slides::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero__slides img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 0 !important;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-      overflow: hidden;
-    }
-
-    .hero__slides img.active { opacity: 1; }
-
-    .photo-band {
-      position: absolute;
-      right: -45px;
-      bottom: 10px;
-      margin: 0; padding: 0;
-      background: transparent;
-      text-align: right;
-      z-index: 4;
-    }
-    .photo-band span {
-      white-space: nowrap;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      line-height: 1;
-      font-size: clamp(2rem, 6vw, 4rem);
-      color: #f5ecd9;
-      text-shadow:
-        -1px 1px 0 #f1a712, -2px 2px 0 #f1a712, -3px 3px 0 #f1a712, -4px 4px 0 #f1a712,
-        -5px 5px 0 #f1a712, -6px 6px 0 #f1a712, -7px 7px 0 #f1a712, -8px 8px 0 #f1a712,
-        -9px 9px 0 #f1a712, -10px 10px 0 #f1a712, -11px 11px 0 #f1a712, -12px 12px 0 #f1a712,
-        -13px 13px 0 #f1a712, -14px 14px 0 #f1a712, -15px 15px 0 #f1a712, -16px 16px 0 #f1a712,
-        -17px 17px 0 #f1a712, -18px 18px 0 #f1a712, -19px 19px 0 #f1a712, -20px 20px 0 #f1a712,
-        -21px 21px 0 #f1a712, -22px 22px 0 #f1a712, -23px 23px 0 #f1a712, -24px 24px 0 #f1a712,
-        -25px 25px 0 #f1a712, -26px 26px 0 #f1a712, -27px 27px 0 #f1a712, -28px 28px 0 #f1a712,
-        -29px 29px 0 #f1a712, -30px 30px 0 #f1a712, -31px 31px 0 #f1a712, -32px 32px 0 #f1a712,
-        -33px 33px 0 #f1a712, -34px 34px 0 #f1a712, -35px 35px 0 #f1a712, -36px 36px 0 #f1a712,
-        -37px 37px 0 #f1a712, -38px 38px 0 #f1a712, -39px 39px 0 #f1a712, -40px 40px 0 #f1a712,
-        -41px 41px 0 #f1a712, -42px 42px 0 #f1a712, -43px 43px 0 #f1a712, -44px 44px 0 #f1a712,
-        -45px 45px 0 #f1a712, -46px 46px 0 #f1a712, -47px 47px 0 #f1a712, -48px 48px 0 #f1a712,
-        -49px 49px 0 #f1a712, -50px 50px 0 #f1a712;
-    }
-
-    @media (max-width: 700px) {
-      .hero { padding-top: 48px; }
-      .hero__slides { width: 90%; box-shadow: -8px 8px 0 0 var(--orange); }
-      .hero__cta-row { padding: 24px 0 40px; }
-    }
-
-    /* ============================================================
-       VIDEO BAND
-    ============================================================ */
-    .video-band { width: 100%; overflow: hidden; line-height: 0; }
-    .video-band video {
-      width: 100%; height: 70vh; max-height: 70vh;
-      object-fit: cover; display: block;
-    }
-
-    /* ============================================================
-       WHAT IS AMAZOLAR?
-    ============================================================ */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .about__quote {
-      font-family: var(--font-heading);
-      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
-      font-weight: 700;
-      color: var(--black);
-      line-height: 1.4;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-    }
-    .about__quote span { color: var(--orange); }
-    .about__img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
-
-    /* ============================================================
-       THE AMAZOLAR PATH
-    ============================================================ */
-    .path { text-align: center; }
-    .path__header { margin-bottom: 56px; }
-    .path__header .section-sub { margin: 0 auto; }
-    .path__cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
-
-    .path-card {
-      background: var(--white); border: 1px solid var(--gray-light);
-      border-radius: var(--radius); padding: 32px 24px; text-align: left;
-      box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .path-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
-    .path-card__step { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
-    .path-card__num {
-      font-size: 2.8rem; font-weight: 900; font-family: var(--font-heading);
-      color: var(--off-white); line-height: 1; margin-bottom: 16px;
-    }
-    .path-card__title { font-size: 0.95rem; font-weight: 900; color: var(--black); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .path-card__desc { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
-
-    /* ============================================================
-       RECOGNITIONS
-    ============================================================ */
-    .recognitions { text-align: center; }
-    .recognitions__cards { display: flex; justify-content: center; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
-    .award-card {
-      background: var(--white); border: 3px solid var(--orange);
-      border-radius: var(--radius); padding: 40px 48px; max-width: 320px; width: 100%;
-      box-shadow: var(--shadow); transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .award-card:hover { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--orange); }
-    .award-card__icon { font-size: 2.5rem; margin-bottom: 16px; }
-    .award-card__title { font-size: 1.1rem; font-weight: 900; color: var(--black); margin-bottom: 8px; text-transform: uppercase; }
-    .award-card__sub { font-size: 0.9rem; color: var(--gray); }
-
-    /* ============================================================
-       BECOME A PARTNER – gold banner
-    ============================================================ */
-    .partner-banner {
-      background: var(--gold); color: var(--white);
-      padding: 96px 0; text-align: center;
-    }
-    .partner-banner__heading {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 4.5vw, 46px);
-      font-weight: 900; letter-spacing: 1px;
-      text-transform: uppercase; line-height: 1.2;
-      margin-bottom: 20px; color: var(--white);
-    }
-    .partner-banner__sub { font-size: 1.05rem; color: rgba(255,255,255,0.92); max-width: 580px; margin: 0 auto 20px; line-height: 1.65; }
-    .partner-banner__tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
-    .tag {
-      background: rgba(255,255,255,0.18); border: 2px solid rgba(255,255,255,0.65);
-      color: var(--white); font-size: 0.78rem; font-weight: 700;
-      padding: 6px 18px; border-radius: var(--radius); text-transform: uppercase; letter-spacing: 0.5px;
-    }
-
-    /* ============================================================
-       UN SUSTAINABLE DEVELOPMENT GOALS
-    ============================================================ */
-    .sdg { text-align: center; }
-    .sdg__header { margin-bottom: 48px; }
-    .sdg__header .section-sub { margin: 0 auto; }
-    .sdg__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-
-    .sdg-card { border-radius: var(--radius); padding: 36px 28px; text-align: left; box-shadow: var(--shadow); }
-    .sdg-card--primary   { background: var(--navy); color: var(--white); }
-    .sdg-card--secondary { background: var(--gold); color: var(--black); }
-    .sdg-card--indirect  { background: var(--white); color: var(--black); border: 1px solid var(--gray-light); }
-
-    .sdg-card__badge { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: var(--radius); margin-bottom: 20px; }
-    .sdg-card--primary   .sdg-card__badge { background: rgba(106,197,199,0.2); color: var(--teal); }
-    .sdg-card--secondary .sdg-card__badge { background: rgba(0,0,0,0.1); color: var(--black); }
-    .sdg-card--indirect  .sdg-card__badge { background: var(--off-white); color: var(--gray); }
-
-    .sdg-card__num { font-size: 3rem; font-weight: 900; font-family: var(--font-heading); line-height: 1; margin-bottom: 8px; opacity: 0.18; }
-    .sdg-card__title { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 900; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .sdg-card__desc { font-size: 0.88rem; opacity: 0.85; line-height: 1.75; }
-
-    /* ============================================================
-       NEWSLETTER
-    ============================================================ */
-    .newsletter { text-align: center; background: var(--off-white); }
-    .newsletter__tagline { font-size: 1rem; color: var(--gray); max-width: 520px; margin: 0 auto 36px; line-height: 1.65; }
-    .newsletter__form { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .newsletter__input {
-      flex: 1; min-width: 240px; max-width: 380px;
-      padding: 14px 20px; border: 2px solid var(--gray-light);
-      border-radius: var(--radius); font-size: 0.95rem; font-family: var(--font);
-      color: var(--black); background: var(--white); outline: none;
-      transition: border-color var(--transition);
-    }
-    .newsletter__input:focus { border-color: var(--orange); }
-    .newsletter__input::placeholder { color: var(--gray); }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    .footer { background: var(--navy); color: rgba(255,255,255,0.78); padding: 64px 0 40px; }
-    .footer__inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
-    .footer__logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-heading); font-size: 1.2rem; font-weight: 900;
-      color: var(--white); letter-spacing: 1px; text-transform: uppercase;
-    }
-    .footer__logo-icon { width: 32px; height: 32px; background: var(--orange); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; }
-    .footer__logo-icon svg { width: 20px; height: 20px; fill: var(--white); }
-    .footer__mission { max-width: 520px; font-size: 0.95rem; line-height: 1.7; }
-    .footer__social a {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.78); font-size: 0.82rem; font-weight: 700;
-      letter-spacing: 0.5px; text-transform: uppercase; transition: color var(--transition);
-    }
-    .footer__social a:hover { color: var(--white); }
-    .footer__social svg { width: 20px; height: 20px; fill: currentColor; }
-    .footer__divider { width: 100%; height: 1px; background: rgba(255,255,255,0.15); margin: 8px 0; }
-    .footer__copy { font-size: 0.8rem; }
-
-    /* ============================================================
-       TOP ACTION BAR
-    ============================================================ */
-    .action-bar {
-      background: #ffffff;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .action-bar__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 14px 0;
-    }
-    .action-bar__msg {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #f08026;
-      font-size: clamp(1rem, 2.2vw, 1.6rem);
-      margin: 0;
-      line-height: 1;
-    }
-    .action-bar__donate {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #f08026;
-      color: #ffffff;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-      padding: 12px 28px;
-      text-decoration: none;
-      box-shadow: 8px 8px 0 0 #d49b20;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      white-space: nowrap;
-    }
-    .action-bar__donate:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 4px 4px 0 0 #d49b20;
-    }
-
-    @media (max-width: 600px) {
-      .action-bar__inner {
-        flex-wrap: wrap;
-        padding: 10px 0;
-        gap: 12px;
-      }
-      .action-bar__msg { font-size: 0.95rem; }
-      .action-bar__donate { font-size: 0.85rem; padding: 10px 20px; }
-    }
-
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 900px) {
-      .path__cards { grid-template-columns: repeat(2, 1fr); }
-      .sdg__cards { grid-template-columns: 1fr 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    }
-
-    @media (max-width: 640px) {
-      .section { padding: 64px 0; }
-      .navbar__links { display: none; flex-direction: column; gap: 0; }
-      .navbar__links.open {
-        display: flex; position: absolute; top: 68px; left: 0; width: 100%;
-        background: var(--gold); border-bottom: 2px solid rgba(0,0,0,0.12); padding: 16px 0;
-      }
-      .navbar__links.open li { width: 100%; }
-      .navbar__links.open li a { display: block; padding: 12px 24px; font-size: 0.9rem; color: var(--white); opacity: 1; }
-      .navbar__links.open .nav-cta a { margin: 8px 24px; display: block; text-align: center; }
-      .navbar__toggle { display: flex; }
-      .navbar { position: relative; }
-      .path__cards { grid-template-columns: 1fr; }
-      .sdg__cards { grid-template-columns: 1fr; }
-      .recognitions__cards { flex-direction: column; align-items: center; }
-      /* hero responsive handled in dedicated block above */
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
 
-  <!-- TOP ACTION BAR -->
-  <div class="action-bar">
-    <div class="container action-bar__inner">
-      <p class="action-bar__msg">Make a difference in 2026</p>
-      <a href="/join" class="action-bar__donate">Donate <span aria-hidden="true">→</span></a>
+<div id="site-header"></div>
+
+<main>
+
+  <!-- 1 ── Hero -->
+  <section class="hero">
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide is-active" style="background-image:url('students.png')"></div>
+      <div class="hero-slide" style="background-image:url('students2.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('students3.jpg')"></div>
     </div>
-  </div>
-
-  <!-- NAVBAR -->
-  <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <div class="container navbar__inner">
-      <a class="navbar__logo" href="#home" aria-label="Amazolar home">
-        <div class="navbar__logo-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 2a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zM4.22 4.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 0 1-1.41 1.42l-.71-.71a1 1 0 0 1 0-1.41zm13.44 13.44a1 1 0 0 1 1.41 0l.71.71a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 0 1 0-1.41zM2 12a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2h-1a1 1 0 0 1-1-1zM4.92 18.36a1 1 0 0 1 0-1.41l.7-.71a1 1 0 1 1 1.42 1.41l-.71.71a1 1 0 0 1-1.41 0zm13.44-13.44a1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7z"/>
-          </svg>
-        </div>
-        Amazolar
-      </a>
-
-      <ul class="navbar__links" id="navLinks">
-        <li><a href="#about">Who We Are</a></li>
-        <li><a href="#recognitions">Our Work</a></li>
-        <li><a href="#partner">Get Involved</a></li>
-        <li class="nav-cta"><a href="/join">Join the Light!</a></li>
-      </ul>
-
-      <div class="navbar__utils">
-        <!-- Search -->
-        <div class="nav-search" id="navSearch">
-          <button class="nav-search__btn" id="navSearchBtn" aria-label="Search" aria-expanded="false">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
-            </svg>
-          </button>
-          <input class="nav-search__input" id="navSearchInput" type="text" placeholder="Search…" aria-label="Search site" />
-          <span class="nav-search__no-results" id="navSearchNoResults" aria-live="polite"></span>
-        </div>
-
-        <!-- Language -->
-        <div class="nav-lang" id="navLang">
-          <button class="nav-lang__btn" id="navLangBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language selector">
-            <svg class="globe-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M12 3a14.5 14.5 0 0 1 0 18M12 3a14.5 14.5 0 0 0 0 18M3 12h18"/>
-            </svg>
-            EN <span aria-hidden="true">▾</span>
-          </button>
-          <ul class="nav-lang__dropdown" id="navLangDropdown" role="listbox" aria-label="Language">
-            <li><button role="option" aria-selected="true">EN</button></li>
-            <li><button role="option" data-lang="es">ES</button></li>
-          </ul>
-        </div>
-
-        <!-- Hamburger -->
-        <button class="navbar__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- 1. HERO -->
-  <section class="hero" id="home" aria-labelledby="hero-heading">
     <div class="container">
-      <h1 class="hero__headline" id="hero-heading">Empowering Minds<br>&amp; Shaping Futures</h1>
-      <div class="hero__slides" id="heroSlides">
-        <img src="students.png"  class="active" alt="Amazolar students proudly holding participation certificates" loading="eager" />
-        <img src="students2.jpg" alt="Students gathered at an Amazolar program event in Ecuador" loading="eager" />
-        <img src="students3.jpg" alt="Young learners engaged in an Amazolar workshop activity" loading="eager" />
-        <img src="students4.jpg" alt="Amazolar participants celebrating their achievements together" loading="eager" />
-        <div class="photo-band"><span>INSPIRE CHANGE</span></div>
-      </div>
-      <div class="hero__cta-row">
-        <a href="/join" class="hero__cta">Join the Light! &nbsp;→</a>
+      <div class="hero-inner">
+        <h1>Every student deserves a <em>pathway</em>, not just a diploma.</h1>
+        <p class="hero-sub">Amazolar equips under-resourced students in Ecuador with the guidance, skills, and connections to build a life of their choosing.</p>
+        <div class="btn-row">
+          <a class="btn btn--gold" href="https://educationequalshope-bloom.kindful.com/?campaign=1417034" target="_blank" rel="noopener">Support a Workshop</a>
+          <a class="btn btn--outline-light" href="#problem">Learn Our Story</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. WHAT IS AMAZOLAR? -->
-  <section class="section" id="about" aria-labelledby="about-heading">
+  <!-- 2 ── Feature grid -->
+  <section class="section section--sand">
     <div class="container">
-      <div class="about-grid">
-        <div>
-          <span class="section-label">Who We Are</span>
-          <p class="about__quote" id="about-heading">
-            We are an emerging initiative seeking to partner with
-            <span>under-resourced schools in Ecuador,</span> to support teachers
-            and empower students through the transformative power of solar energy.
-          </p>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Get Involved</h3>
+          <p>Volunteer in Quito or from the US, launch a fundraiser, or bring your company on board as a sponsorship partner. There's a role for everyone.</p>
+          <a class="card-link" href="get-involved.html">Find your role &rarr;</a>
+        </article>
+        <article class="feature-card">
+          <h3>Our Programs</h3>
+          <p>From monthly Iluminando Caminos workshops to internships, English classes, and scholarships — see how we turn ambition into action.</p>
+          <a class="card-link" href="programs.html">Explore programs &rarr;</a>
+        </article>
+        <article class="feature-card">
+          <h3>Our Impact</h3>
+          <p>Every workshop serves 20 students on the edge of a decision that shapes the rest of their lives. Your support decides which way it goes.</p>
+          <a class="card-link" href="sponsorship.html">See how sponsorship works &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 ── The Problem -->
+  <section class="section section--indigo" id="problem">
+    <div class="container">
+      <span class="eyebrow eyebrow--gold">The Problem</span>
+      <h2 class="statement-heading">A diploma without direction isn't an opportunity &mdash; it's just a more educated version of the same trap.</h2>
+      <p class="statement-body">In Quito's most underserved communities, students live on family budgets of $2 a day. Many are the first in their families to graduate high school &mdash; carrying the hope of finally breaking a cycle of generational poverty. But with no system to prepare them for what comes next, that hope is too often crushed by unemployment, exploitation, substance abuse, or worse.</p>
+    </div>
+  </section>
+
+  <!-- 4 ── Our Solution -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Our Solution</span>
+      <h2 class="section-heading">Iluminando Caminos &mdash; one workshop a month, the difference of a lifetime.</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">01</span>
+          <h3>Monthly Workshops</h3>
+          <p>A full day of professional development each month &mdash; exploring interests, mapping career pathways, and turning knowledge into action.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">02</span>
+          <h3>Expert Guidance</h3>
+          <p>Industry professionals guide students through concrete, applicable steps &mdash; from university and technical school to direct employment.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">03</span>
+          <h3>Doors &amp; Connections</h3>
+          <p>Through our partner network, we bridge the gap between knowing the path and walking it &mdash; internships, English classes, and scholarships that turn ambition into action.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 ── Featured story -->
+  <section class="section section--sand">
+    <div class="container">
+      <div class="split">
+        <div class="split-media">
+          <img src="students4.jpg" alt="Students at an Iluminando Caminos workshop in Quito">
         </div>
         <div>
-          <img
-            class="about__img"
-            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80"
-            alt="Students studying in a classroom, representing Amazolar's mission to empower learners in Ecuador"
-          />
+          <span class="placeholder-note">[PLACEHOLDER &mdash; replace with real story]</span>
+          <span class="eyebrow" style="display:block;">Featured Story</span>
+          <h2 class="section-heading">Meet [Student Name]</h2>
+          <p class="section-sub">[Student Name] joined Iluminando Caminos in 10th grade, unsure whether life after graduation held anything beyond the jobs she saw around her. Two years of workshops, mentorship, and a summer internship later, she's enrolled in technical school with a scholarship &mdash; and a plan she wrote herself.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- VIDEO BAND -->
-  <section class="video-band" aria-label="Amazolar in Ecuador">
-    <video src="Ecuador_Video.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <!-- 6 ── Video -->
+  <section class="section">
+    <div class="container center">
+      <span class="eyebrow">Watch</span>
+      <h2 class="section-heading section-heading--center">See Iluminando Caminos in Action</h2>
+      <p class="section-sub">A day inside one of our monthly workshops in Quito.</p>
+      <div class="video-frame">
+        <video controls preload="metadata" poster="students4.jpg">
+          <source src="Ecuador_Video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
   </section>
 
-  <!-- 3. THE AMAZOLAR PATH -->
-  <section class="section section--gray path" id="path" aria-labelledby="path-heading">
+  <!-- 7 ── Meet Our Team -->
+  <section class="section section--sand">
+    <div class="container center">
+      <span class="eyebrow">Our People</span>
+      <h2 class="section-heading section-heading--center">Meet Our Team</h2>
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="team-avatar" aria-hidden="true">DA</div>
+          <h3>Danny Andrade</h3>
+          <p class="team-role">Co-Founder, Ecuador Operations Lead</p>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar" aria-hidden="true">C</div>
+          <h3>Carson</h3>
+          <p class="team-role">Co-Founder, Donor Relations &amp; Strategy</p>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar" aria-hidden="true">P</div>
+          <h3>Pannaga</h3>
+          <p class="team-role">Fundraising &amp; Corporate Sponsorships</p>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar" aria-hidden="true">H</div>
+          <h3>Hillary</h3>
+          <p class="team-role">Program Systems &amp; Impact</p>
+        </article>
+        <article class="team-card">
+          <div class="team-avatar" aria-hidden="true">FP</div>
+          <h3>Fernanda Pinto</h3>
+          <p class="team-role">Expert in Residence (Curriculum &amp; Employment)</p>
+        </article>
+      </div>
+      <p style="margin-top:40px;"><a class="btn btn--outline" href="about.html#team">View All</a></p>
+    </div>
+  </section>
+
+  <!-- 8 ── Partner strip -->
+  <section class="partner-strip">
     <div class="container">
-      <div class="path__header">
-        <span class="section-label">Our Process</span>
-        <h2 class="section-heading" id="path-heading">The Amazolar Path</h2>
-        <p class="section-sub">A four-step journey from identifying communities in need to delivering sustainable, solar-powered solutions.</p>
-      </div>
-      <div class="path__cards">
-        <div class="path-card">
-          <div class="path-card__step">Step 01</div>
-          <div class="path-card__num">01</div>
-          <div class="path-card__title">Community Discovery</div>
-          <p class="path-card__desc">We identify under-resourced schools in Ecuador that lack access to reliable energy and quality learning environments.</p>
-        </div>
-        <div class="path-card">
-          <div class="path-card__step">Step 02</div>
-          <div class="path-card__num">02</div>
-          <div class="path-card__title">Partner Engagement</div>
-          <p class="path-card__desc">Our team visits schools in person, builds relationships with educators, administrators, and local communities.</p>
-        </div>
-        <div class="path-card">
-          <div class="path-card__step">Step 03</div>
-          <div class="path-card__num">03</div>
-          <div class="path-card__title">Asset Mapping</div>
-          <p class="path-card__desc">We conduct thorough assessments to determine the areas of greatest need and identify the highest-impact opportunities.</p>
-        </div>
-        <div class="path-card">
-          <div class="path-card__step">Step 04</div>
-          <div class="path-card__num">04</div>
-          <div class="path-card__title">Impact in Action</div>
-          <p class="path-card__desc">We provide solar resources and ongoing support to create sustainable, long-term impact for students and teachers alike.</p>
-        </div>
-      </div>
-      <div style="text-align:center;">
-        <a href="#about" class="btn btn-outline">More Details</a>
-      </div>
+      <span class="partner-badge">Education = Hope</span>
+      <p>In partnership with <strong>Education = Hope (E=H)</strong>, our fiscal sponsor and on-the-ground partner in Quito.</p>
     </div>
   </section>
 
-  <!-- 4. RECOGNITIONS -->
-  <section class="section recognitions" id="recognitions" aria-labelledby="recognitions-heading">
+  <!-- 9 ── Contact mini-block -->
+  <section class="section">
     <div class="container">
-      <span class="section-label">Awards &amp; Recognition</span>
-      <h2 class="section-heading" id="recognitions-heading">Our Achievements</h2>
-      <p class="section-sub" style="margin:0 auto;">Amazolar has been recognized by leading entrepreneurship and innovation competitions for our mission-driven approach.</p>
-      <div class="recognitions__cards">
-        <div class="award-card">
-          <div class="award-card__icon">🏆</div>
-          <div class="award-card__title">Winner</div>
-          <div class="award-card__sub">Bergh Startup Accelerator</div>
+      <div class="contact-mini">
+        <div>
+          <h3>Questions? Ideas? Want to help?</h3>
+          <p>Write to us at <a class="email-link" href="mailto:belairec@amazolar.org">belairec@amazolar.org</a> &mdash; we answer every message.</p>
         </div>
-        <div class="award-card">
-          <div class="award-card__icon">🥈</div>
-          <div class="award-card__title">2nd Place</div>
-          <div class="award-card__sub">Big Idea Pitch Competition</div>
-        </div>
+        <a class="btn btn--primary" href="https://educationequalshope-bloom.kindful.com/?campaign=1417034" target="_blank" rel="noopener">Donate</a>
       </div>
     </div>
   </section>
 
-  <!-- 5. BECOME A PARTNER -->
-  <section class="partner-banner" id="partner" aria-labelledby="partner-heading">
-    <div class="container">
-      <h2 class="partner-banner__heading" id="partner-heading">
-        Be the Change!<br />Become a Partner.
-      </h2>
-      <p class="partner-banner__sub">We're actively seeking organizations and individuals aligned with our mission. We welcome partners working in:</p>
-      <div class="partner-banner__tags">
-        <span class="tag">Education</span>
-        <span class="tag">Energy</span>
-        <span class="tag">Technology</span>
-        <span class="tag">Employment</span>
-      </div>
-      <a href="mailto:contact@amazolar.org" class="btn btn-white">Join Us</a>
-    </div>
-  </section>
+</main>
 
-  <!-- 6. UN SUSTAINABLE DEVELOPMENT GOALS -->
-  <section class="section section--gray sdg" id="sdg" aria-labelledby="sdg-heading">
-    <div class="container">
-      <div class="sdg__header">
-        <span class="section-label">Global Alignment</span>
-        <h2 class="section-heading" id="sdg-heading">UN Sustainable Development Goals</h2>
-        <p class="section-sub">Amazolar's work directly supports the United Nations' vision for a more equitable and sustainable world.</p>
-      </div>
-      <div class="sdg__cards">
-        <div class="sdg-card sdg-card--primary">
-          <span class="sdg-card__badge">Primary Goal</span>
-          <div class="sdg-card__num">04</div>
-          <div class="sdg-card__title">Quality Education</div>
-          <p class="sdg-card__desc">Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.</p>
-        </div>
-        <div class="sdg-card sdg-card--secondary">
-          <span class="sdg-card__badge">Primary Goal</span>
-          <div class="sdg-card__num">07</div>
-          <div class="sdg-card__title">Affordable &amp; Clean Energy</div>
-          <p class="sdg-card__desc">Ensure access to affordable, reliable, sustainable, and modern energy for all communities.</p>
-        </div>
-        <div class="sdg-card sdg-card--indirect">
-          <span class="sdg-card__badge">Indirect Goals</span>
-          <div class="sdg-card__title" style="margin-top:16px;">Additional SDGs We Support</div>
-          <p class="sdg-card__desc">
-            &bull; SDG 1 — No Poverty<br />
-            &bull; SDG 8 — Decent Work &amp; Economic Growth<br />
-            &bull; SDG 10 — Reduced Inequalities<br />
-            &bull; SDG 11 — Sustainable Cities &amp; Communities<br />
-            &bull; SDG 13 — Climate Action
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- 10 ── Footer -->
+<div id="site-footer"></div>
 
-  <!-- 7. NEWSLETTER SIGNUP -->
-  <section class="section newsletter" id="newsletter" aria-labelledby="newsletter-heading">
-    <div class="container">
-      <span class="section-label">Stay Connected</span>
-      <h2 class="section-heading" id="newsletter-heading">Join Our Newsletter!</h2>
-      <p class="newsletter__tagline">We believe in a future brightened by collaboration and fueled by renewable energy. Stay informed on our progress and ways to get involved.</p>
-      <form class="newsletter__form" onsubmit="handleSubscribe(event)" novalidate>
-        <label for="email-input" class="sr-only">Email address</label>
-        <input class="newsletter__input" type="email" id="email-input" name="email" placeholder="Enter your email address" required aria-required="true" />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- 8. FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container footer__inner">
-      <div class="footer__logo">
-        <div class="footer__logo-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 2a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0v-1a1 1 0 0 1 1-1zM4.22 4.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 0 1-1.41 1.42l-.71-.71a1 1 0 0 1 0-1.41zm13.44 13.44a1 1 0 0 1 1.41 0l.71.71a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 0 1 0-1.41zM2 12a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h1a1 1 0 0 1 0 2h-1a1 1 0 0 1-1-1zM4.92 18.36a1 1 0 0 1 0-1.41l.7-.71a1 1 0 1 1 1.42 1.41l-.71.71a1 1 0 0 1-1.41 0zm13.44-13.44a1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-1.41 0zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7z"/>
-          </svg>
-        </div>
-        Amazolar
-      </div>
-      <p class="footer__mission">Amazolar is a mission-driven initiative partnering with under-resourced schools in Ecuador to support teachers and empower students through the transformative power of solar energy.</p>
-      <div class="footer__social">
-        <a href="https://www.linkedin.com/company/amazolar" target="_blank" rel="noopener noreferrer" aria-label="Amazolar on LinkedIn">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          Follow us on LinkedIn
-        </a>
-      </div>
-      <div class="footer__divider"></div>
-      <p class="footer__copy">&copy; 2025 Amazolar. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <style>.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }</style>
-
-  <script>
-    // ── Nav toggle (hamburger) ──
-    const toggle   = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.setAttribute('aria-expanded', false);
-      });
-    });
-
-    // ── Search ──
-    const navSearch          = document.getElementById('navSearch');
-    const navSearchBtn       = document.getElementById('navSearchBtn');
-    const navSearchInput     = document.getElementById('navSearchInput');
-    const navSearchNoResults = document.getElementById('navSearchNoResults');
-
-    navSearchBtn.addEventListener('click', () => {
-      const isOpen = navSearch.classList.toggle('open');
-      navSearchBtn.setAttribute('aria-expanded', isOpen);
-      if (isOpen) { navSearchInput.focus(); }
-      else { navSearchInput.value = ''; navSearchNoResults.classList.remove('visible'); }
-    });
-
-    navSearchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        navSearch.classList.remove('open');
-        navSearchBtn.setAttribute('aria-expanded', 'false');
-        navSearchInput.value = '';
-        navSearchNoResults.classList.remove('visible');
-        return;
-      }
-      if (e.key !== 'Enter') return;
-      const query = navSearchInput.value.trim().toLowerCase();
-      if (!query) return;
-      const candidates = document.querySelectorAll('h1, h2, h3, p, li, .path-card__title, .award-card__title');
-      let found = null;
-      for (const el of candidates) {
-        if (el.textContent.toLowerCase().includes(query)) { found = el; break; }
-      }
-      if (found) {
-        found.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        navSearch.classList.remove('open');
-        navSearchBtn.setAttribute('aria-expanded', 'false');
-        navSearchInput.value = '';
-      } else {
-        navSearchNoResults.textContent = 'No results';
-        navSearchNoResults.classList.add('visible');
-        setTimeout(() => navSearchNoResults.classList.remove('visible'), 2000);
-      }
-    });
-
-    // ── Language picker ──
-    const navLang         = document.getElementById('navLang');
-    const navLangBtn      = document.getElementById('navLangBtn');
-    const navLangDropdown = document.getElementById('navLangDropdown');
-
-    navLangBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = navLang.classList.toggle('open');
-      navLangBtn.setAttribute('aria-expanded', isOpen);
-    });
-
-    document.addEventListener('click', () => {
-      navLang.classList.remove('open');
-      navLangBtn.setAttribute('aria-expanded', 'false');
-    });
-
-    navLangDropdown.querySelectorAll('button').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (btn.dataset.lang === 'es') {
-          // TODO: link to Spanish version
-        }
-        navLang.classList.remove('open');
-        navLangBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // ── Hero slideshow ──
-    (function () {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const slides   = Array.from(document.querySelectorAll('#heroSlides img'));
-      const container = document.getElementById('heroSlides');
-      let current = 0;
-      let paused  = false;
-
-      function advance() {
-        if (paused) return;
-        slides[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
-      }
-
-      const timer = setInterval(advance, 7000);
-      container.addEventListener('mouseenter', () => { paused = true; });
-      container.addEventListener('mouseleave', () => { paused = false; });
-    })();
-
-    // ── Newsletter ──
-    function handleSubscribe(e) {
-      e.preventDefault();
-      const input = document.getElementById('email-input');
-      if (!input.value) return;
-      alert('Thank you for subscribing! We\'ll be in touch soon.');
-      input.value = '';
-    }
-  </script>
-
+<script src="main.js" defer></script>
 </body>
 </html>
