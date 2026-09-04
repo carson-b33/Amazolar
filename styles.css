@@ -428,6 +428,12 @@ h1, h2, h3, h4 {
 }
 .team-card:nth-child(2n) .team-avatar { background: var(--terracotta); }
 .team-card:nth-child(3n) .team-avatar { background: var(--sage); }
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
 .team-card h3 { font-size: 1.12rem; margin-bottom: 4px; }
 .team-role {
   font-size: 0.82rem;
