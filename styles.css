@@ -186,6 +186,9 @@ h1, h2, h3, h4 {
 .main-nav > ul > li > .nav-toggle-sub:hover,
 .main-nav > ul > li.active > a { color: var(--terracotta); }
 .main-nav > ul > li.active > a { font-weight: 700; }
+.main-nav > ul > li[data-nav="home"] > a,
+.main-nav > ul > li[data-nav="home"] > a:hover,
+.main-nav > ul > li[data-nav="home"].active > a { color: var(--gold); }
 
 .caret { width: 9px; height: 9px; fill: currentColor; transition: transform var(--transition); }
 
