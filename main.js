@@ -15,7 +15,7 @@ const teamMembers = [
   { initials: 'P', name: 'Pannaga', role: 'Fundraising & Corporate Sponsorships' },
   { initials: 'H', name: 'Hillary', role: 'Program Systems & Impact' },
   { initials: 'FP', name: 'Fernanda Pinto', role: 'Expert in Residence (Curriculum & Employment)' },
-  { image: '/assets/images/micaela.jpg', name: 'Micaela Espinosa', role: 'HEAD OF MARKETING & MEDIA' },
+  { image: 'micaela_square_circle.png', name: 'Micaela Espinosa', role: 'HEAD OF MARKETING & MEDIA' },
 ];
 
 // ── SVG icons ────────────────────────────────────────────────
