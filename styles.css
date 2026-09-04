@@ -162,10 +162,10 @@ h1, h2, h3, h4 {
   font-family: var(--font-head);
   font-weight: 700;
   font-size: 1.55rem;
-  color: var(--indigo);
+  color: var(--gold);
   letter-spacing: 0.01em;
 }
-.logo span { color: var(--terracotta); }
+.logo span { color: var(--gold); }
 
 .main-nav ul { display: flex; align-items: center; gap: 6px; }
 .main-nav > ul > li { position: relative; }
