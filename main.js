@@ -41,7 +41,7 @@ const headerHTML = `
     </button>
     <nav class="main-nav" aria-label="Main">
       <ul>
-        <li data-nav="home"><a href="index.html">Home</a></li>
+        <li data-nav="home"><a class="home-link" href="index.html">Home</a></li>
         <li data-nav="about" class="has-dropdown">
           <button class="nav-toggle-sub" type="button" aria-expanded="false">About
             <svg class="caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M0 0l5 6 5-6z"/></svg>
